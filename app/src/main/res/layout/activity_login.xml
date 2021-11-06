@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:background="@color/dark_blue">
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_1"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/image_view_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"/>
+
+        <TextView
+            android:id="@+id/text_view_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bem vindo"
+            android:textSize="45dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bold"
+            android:textAllCaps="true"
+            android:layout_below="@id/image_view_1"/>
+
+        <TextView
+            android:id="@+id/text_view_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Faça seu login para continuar"
+            android:layout_below="@id/text_view_1"
+            android:textColor="@color/clear_blue"
+            android:textSize="18dp"
+            android:layout_marginTop="-8dp"
+            android:fontFamily="@font/regular"/>
+
+        <EditText
+            android:id="@+id/edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textbox"
+            android:layout_below="@id/text_view_2"
+            android:hint="Email"
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/regular"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            android:paddingStart="20dp"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textbox"
+            android:layout_below="@id/edt_email"
+            android:hint="Senha"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/regular"
+            android:textSize="20dp"
+            android:paddingStart="20dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_password"
+            android:layout_marginTop="15dp"
+            android:text="Login"
+            android:padding="10dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:fontFamily="@font/bold"
+            android:background="@drawable/button_blue"
+            android:backgroundTint="@color/clear_blue"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_forget_password"
+            android:text="Esqueceu sua senha?"
+            android:textColor="@color/clear_blue"
+            android:textSize="16dp"
+            android:fontFamily="@font/regular"
+            android:layout_below="@id/btn_login"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_layout_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/text_view_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Não possui uma conta?"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/regular"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cadastre-se"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bold"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
