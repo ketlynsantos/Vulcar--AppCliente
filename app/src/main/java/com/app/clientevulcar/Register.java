@@ -36,6 +36,13 @@ public class Register extends AppCompatActivity {
             }
         });
 
+        imgArrowBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Register.this, Login.class));
+            }
+        });
+
     }
 
     public void getIds() {
