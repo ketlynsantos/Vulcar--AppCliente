@@ -59,7 +59,7 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/textbox"
             android:fontFamily="@font/regular"
-            android:hint="Nome Completo"
+            android:hint="Nome e sobrenome"
             android:padding="10dp"
             android:paddingStart="20dp"
             android:textColor="@color/white"

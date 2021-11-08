@@ -17,6 +17,7 @@ public class SplashScreen extends AppCompatActivity implements Runnable{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        //Remove a status bar da tela
         getSupportActionBar().hide();
 
         handler = new Handler();
