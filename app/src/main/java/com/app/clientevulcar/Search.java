@@ -6,34 +6,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.MediaController;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import pl.droidsonroids.gif.GifImageView;
-
-public class Home extends AppCompatActivity {
+public class Search extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_search);
 
-        getSupportActionBar().hide();
         getIds();
-
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.search);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.home:
-                        return true;
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(), Search.class));
+                        return true;
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), Home.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.requests:
@@ -48,11 +44,11 @@ public class Home extends AppCompatActivity {
 
                 return false;
             }
-        });
 
+        });
     }
 
-    private void getIds() {
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
+    private void getIds(){
+         bottomNavigationView = findViewById(R.id.bottom_navigation);
     }
 }
