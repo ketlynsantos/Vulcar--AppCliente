@@ -22,6 +22,9 @@ public class Register extends AppCompatActivity {
     public AppCompatButton btnRegister;
     public ImageView imgArrowBack;
 
+    //Database
+    private String HOST ="http://192.168.24.146/connection";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
