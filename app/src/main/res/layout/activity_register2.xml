@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".Register">
+    tools:context=".Register2">
 
     <ImageView
         android:id="@+id/img_back"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/ic__arrow_back" />
+        android:background="@drawable/ic__arrow_back"/>
 
     <RelativeLayout
         android:id="@+id/relative_layout_1"
@@ -26,8 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/car" />
+            android:layout_marginTop="40dp"
+            android:background="@drawable/car"/>
 
         <TextView
             android:id="@+id/text_view_1"
@@ -38,7 +38,7 @@
             android:text="Bem vindo"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="45dp" />
+            android:textSize="45dp"/>
 
         <TextView
             android:id="@+id/text_view_2"
@@ -49,32 +49,17 @@
             android:fontFamily="@font/regular"
             android:text="Cadastre-se aqui"
             android:textColor="@color/clear_blue"
-            android:textSize="18dp" />
+            android:textSize="18dp"/>
 
         <EditText
-            android:id="@+id/edt_name"
+            android:id="@+id/edt_endereco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_2"
+            android:layout_below="@+id/text_view_2"
             android:layout_marginTop="15dp"
             android:background="@drawable/textbox"
             android:fontFamily="@font/regular"
-            android:hint="Nome"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
-
-        <EditText
-            android:id="@+id/edt_cpf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edt_name"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:hint="CPF"
+            android:hint="Endereço"
             android:padding="10dp"
             android:paddingStart="20dp"
             android:textColor="@color/white"
@@ -82,55 +67,106 @@
             android:textSize="20dp"/>
 
         <EditText
-            android:id="@+id/edt_email"
-            android:layout_width="match_parent"
+            android:id="@+id/edt_complemento"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_cpf"
+            android:layout_below="@+id/edt_endereco"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
             android:background="@drawable/textbox"
             android:fontFamily="@font/regular"
-            android:hint="E-mail"
+            android:hint="Complemento"
             android:padding="10dp"
             android:paddingStart="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20dp"/>
 
         <EditText
-            android:id="@+id/edt_phone"
-            android:layout_width="match_parent"
+            android:id="@+id/edt_num"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_email"
+            android:layout_toRightOf="@+id/edt_complemento"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/edt_endereco"
             android:layout_marginTop="15dp"
             android:background="@drawable/textbox"
             android:fontFamily="@font/regular"
-            android:hint="Telefone"
+            android:hint="Nº"
             android:padding="10dp"
             android:paddingStart="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20dp"/>
 
         <EditText
-            android:id="@+id/edt_password"
+            android:id="@+id/edt_bairro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_phone"
+            android:layout_below="@id/edt_complemento"
             android:layout_marginTop="15dp"
             android:background="@drawable/textbox"
             android:fontFamily="@font/regular"
-            android:hint="Senha"
+            android:hint="Bairro"
             android:padding="10dp"
             android:paddingStart="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edt_cidade"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_bairro"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="Cidade"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edt_uf"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/edt_cidade"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/edt_bairro"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="UF"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edt_cep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_cidade"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="CEP"
+            android:padding="10dp"
+            android:paddingStart="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_register2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_password"
+            android:layout_below="@id/edt_cep"
             android:layout_marginTop="15dp"
             android:background="@drawable/button_blue"
             android:backgroundTint="@color/clear_blue"
@@ -139,38 +175,10 @@
             android:text="Cadastrar"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20dp" />
-
+            android:textColorHint="@color/white"
+            android:textSize="20dp"/>
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/linear_layout_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/text_view_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/regular"
-            android:text="Já possui uma conta?"
-            android:textColor="@color/white"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/txt_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:fontFamily="@font/bold"
-            android:text="Clique aqui"
-            android:textColor="@color/white"
-            android:textSize="18dp" />
-
-    </LinearLayout>
 
 </RelativeLayout>
