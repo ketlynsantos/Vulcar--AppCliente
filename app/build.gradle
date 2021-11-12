@@ -41,5 +41,6 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
 
     implementation 'com.koushikdutta.ion:ion:3.0.8'
+    implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
 
 }
