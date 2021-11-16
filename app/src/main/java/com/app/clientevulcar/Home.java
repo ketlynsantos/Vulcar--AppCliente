@@ -6,15 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.MediaController;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import pl.droidsonroids.gif.GifImageView;
 
 public class Home extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
+    public ImageView imgGoToAdress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,14 @@ public class Home extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                 }
-
                 return false;
+            }
+        });
+
+        imgGoToAdress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, MyAddress.class));
             }
         });
 
@@ -54,5 +60,6 @@ public class Home extends AppCompatActivity {
 
     private void getIds() {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        imgGoToAdress = findViewById(R.id.img_go_address);
     }
 }

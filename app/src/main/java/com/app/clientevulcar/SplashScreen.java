@@ -23,7 +23,6 @@ public class SplashScreen extends AppCompatActivity implements Runnable{
         handler = new Handler();
         thread = new Thread(this);
         thread.start();
-
     }
 
     @Override
@@ -44,6 +43,8 @@ public class SplashScreen extends AppCompatActivity implements Runnable{
 
         }
 
-        startActivity(new Intent(this, Login.class));
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+        finish();
     }
 }
