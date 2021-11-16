@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+
 public class Register extends AppCompatActivity {
 
     public TextView txtLogin;
@@ -17,8 +20,10 @@ public class Register extends AppCompatActivity {
     public EditText edtEmail;
     public EditText edtPhone;
     public EditText edtPassword;
+    public EditText edtCpf;
     public AppCompatButton btnRegister;
     public ImageView imgArrowBack;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,7 @@ public class Register extends AppCompatActivity {
 
         getSupportActionBar().hide();
         getIds();
+        maskFormat();
 
         txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,15 +55,25 @@ public class Register extends AppCompatActivity {
                 String email = edtEmail.getText().toString();
                 String phone = edtPhone.getText().toString();
                 String password = edtPassword.getText().toString();
+                String cpf = edtCpf.getText().toString();
 
-                boolean checkValidations = validationRegister(name, email, phone, password);
+                boolean checkValidations = validationRegister(name, email, phone, password, cpf);
+
+                Intent intent = new Intent(Register.this, Register2.class);
 
               //Testando validação
-               /* if (checkValidations == true) {
-                   Toast.makeText(getApplicationContext(), "Deu certo!", Toast.LENGTH_SHORT).show();
+               if (checkValidations == true) {
+
+                   intent.putExtra("name", name);
+                   intent.putExtra("email", email);
+                   intent.putExtra("phone", phone);
+                   intent.putExtra("password", password);
+                   intent.putExtra("cpf", cpf);
+                   startActivity(intent);
+
                } else {
-                   Toast.makeText(getApplicationContext(), "Deu errado!", Toast.LENGTH_SHORT).show();
-               }*/
+                   //Toast.makeText(getApplicationContext(), phone.length(), Toast.LENGTH_SHORT).show();
+               }
             }
         });
 
@@ -71,9 +87,20 @@ public class Register extends AppCompatActivity {
         edtPassword = this.findViewById(R.id.edt_password);
         btnRegister = this.findViewById(R.id.btn_register);
         imgArrowBack = this.findViewById(R.id.img_back);
+        edtCpf = this.findViewById(R.id.edt_cpf);
     }
 
-    private Boolean validationRegister(String name, String email, String phone, String password) {
+    private void maskFormat() {
+        SimpleMaskFormatter mask_tel = new SimpleMaskFormatter("(NN) NNNNN-NNNN");
+        MaskTextWatcher mtw_tel = new MaskTextWatcher(edtPhone, mask_tel);
+        edtPhone.addTextChangedListener(mtw_tel);
+
+        SimpleMaskFormatter mask_cpf = new SimpleMaskFormatter("NNN-NNN-NNN-NN");
+        MaskTextWatcher mtw_cpf = new MaskTextWatcher(edtCpf, mask_cpf);
+        edtCpf.addTextChangedListener(mtw_cpf);
+    }
+
+    private Boolean validationRegister(String name, String email, String phone, String password, String cpf) {
         if (name.length() == 0) {
             edtName.requestFocus();
             edtName.setError("Campo vazio.");
@@ -94,15 +121,19 @@ public class Register extends AppCompatActivity {
             edtPhone.requestFocus();
             edtPhone.setError("Campo vazio.");
             return false;
-        } else if(!phone.matches("^\\s*(\\d{2}|\\d{0})[-. ]?(\\d{5}|\\d{4})[-. ]?(\\d{4})[-. ]?\\s*$")) {
+        } else if(phone.length() != 15) {
             edtPhone.requestFocus();
-            edtPhone.setError("Formato correto: xx xxxxx-xxxx");
+            edtPhone.setError("Número incorreto.");
             return false;
         } else if (password.length() < 5) {
             edtPassword.requestFocus();
             edtPassword.setError("Mínino 6 caracteres.");
             return false;
-        }  else {
+        }  else if (cpf.length() == 0) {
+            edtCpf.requestFocus();
+            edtCpf.setError("Campo vazio");
+            return false;
+        } else {
             return true;
         }
     }
