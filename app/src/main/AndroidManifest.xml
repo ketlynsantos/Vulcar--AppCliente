@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClienteVulcar">
-        <activity android:name=".MyAddress"></activity>
-        <activity android:name=".Register2"></activity>
+        <activity android:name=".Activitys.EditAddress"></activity>
+        <activity android:name=".MyAddress" />
+        <activity android:name=".Register2" />
         <activity android:name=".Profile" />
         <activity android:name=".Requests" />
         <activity android:name=".Search" />

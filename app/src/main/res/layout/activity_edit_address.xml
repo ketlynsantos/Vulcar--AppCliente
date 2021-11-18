@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_blue"
+    tools:context=".Activitys.EditAddress">
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic__arrow_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/semibold"
+            android:text="Editar Endereço"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="28dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative_layout_1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="15dp">
+
+        <EditText
+            android:id="@+id/edt_new_endereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_2"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="Endereço"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edt_new_complemento"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_new_endereco"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="Complemento"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edt_new_num"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_new_endereco"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@+id/edt_new_complemento"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="Nº"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edt_new_bairro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_new_complemento"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="Bairro"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edt_new_cidade"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_new_bairro"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="Cidade"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edt_new_uf"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_new_bairro"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@+id/edt_new_cidade"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="UF"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edt_new_cep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_new_cidade"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="CEP"
+            android:padding="10dp"
+            android:paddingStart="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_edit_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_blue"
+        android:backgroundTint="@color/clear_blue"
+        android:elevation="2dp"
+        android:fontFamily="@font/bold"
+        android:padding="10dp"
+        android:text="Editar"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+</RelativeLayout>
