@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/car"/>
 
         <TextView
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/image_view_1"
             android:fontFamily="@font/bold"
-            android:text="Bem vindo"
+            android:text="Agora"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="45dp"/>
@@ -47,7 +47,7 @@
             android:layout_below="@id/text_view_1"
             android:layout_marginTop="-8dp"
             android:fontFamily="@font/regular"
-            android:text="Cadastre-se aqui"
+            android:text="Digite o seu endereço, por favor!"
             android:textColor="@color/clear_blue"
             android:textSize="18dp"/>
 
