@@ -1,6 +1,7 @@
 package com.app.clientevulcar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import com.app.clientevulcar.R;
 public class MyAddress extends AppCompatActivity {
 
     public ImageView imgBack;
+    public AppCompatButton btnEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +29,11 @@ public class MyAddress extends AppCompatActivity {
                 startActivity(new Intent(MyAddress.this, Home.class));
             }
         });
+
     }
 
     private void getIds() {
         imgBack = findViewById(R.id.img_back);
+        btnEdit = findViewById(R.id.btn_edit);
     }
 }
