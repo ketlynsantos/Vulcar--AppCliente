@@ -1,4 +1,4 @@
-package com.app.clientevulcar;
+package com.app.clientevulcar.Activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.app.clientevulcar.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Home extends AppCompatActivity {
@@ -35,14 +36,17 @@ public class Home extends AppCompatActivity {
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(), Search.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.requests:
                         startActivity(new Intent(getApplicationContext(), Requests.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(), Profile.class));
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                 }
                 return false;

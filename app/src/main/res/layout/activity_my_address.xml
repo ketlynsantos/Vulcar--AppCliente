@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".MyAddress">
+    tools:context=".Activitys.MyAddress">
 
     <RelativeLayout
         android:id="@+id/relative_layout_1"
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_1"
             android:fontFamily="@font/regular"
-            android:text="Rua Arnaldo Antônio"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="20dp" />
 
@@ -81,7 +81,7 @@
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/text_view_2"
             android:fontFamily="@font/regular"
-            android:text="82"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="20dp" />
 
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_3"
             android:fontFamily="@font/regular"
-            android:text="Vila Engenho Novo"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="20dp" />
 
@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_view_4"
                     android:fontFamily="@font/regular"
-                    android:text="Barueri"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="20dp" />
 
@@ -159,13 +159,13 @@
                     android:textSize="20dp" />
 
                 <TextView
-                    android:id="@+id/txt_state"
+                    android:id="@+id/txt_uf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_view_5"
                     android:layout_toRightOf="@id/txt_city"
                     android:fontFamily="@font/regular"
-                    android:text="SP"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="22dp" />
 
@@ -190,7 +190,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_6"
             android:fontFamily="@font/regular"
-            android:text="06861-240"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="20dp" />
 

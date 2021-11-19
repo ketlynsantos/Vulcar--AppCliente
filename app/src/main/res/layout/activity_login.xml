@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".Login">
+    tools:context=".Activitys.Login">
 
     <RelativeLayout
         android:id="@+id/relative_layout_1"

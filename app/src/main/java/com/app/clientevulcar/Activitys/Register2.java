@@ -1,4 +1,4 @@
-package com.app.clientevulcar;
+package com.app.clientevulcar.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -8,9 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.clientevulcar.R;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.gson.JsonObject;
@@ -43,7 +43,10 @@ public class Register2 extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Register2.this, Register.class));
+                Intent intent = new Intent(Register2.this, Register.class);
+                startActivity(intent);
+                finish();
+
             }
         });
 
