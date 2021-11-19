@@ -1,10 +1,13 @@
-package com.app.clientevulcar;
+package com.app.clientevulcar.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.app.clientevulcar.Activitys.Login;
+import com.app.clientevulcar.R;
 
 public class SplashScreen extends AppCompatActivity implements Runnable{
 

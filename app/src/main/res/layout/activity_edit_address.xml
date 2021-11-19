@@ -29,7 +29,7 @@
             android:text="Editar Endereço"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="28dp" />
+            android:textSize="24dp" />
 
     </RelativeLayout>
 

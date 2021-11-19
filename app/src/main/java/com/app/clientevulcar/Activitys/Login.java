@@ -1,4 +1,4 @@
-package com.app.clientevulcar;
+package com.app.clientevulcar.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.app.clientevulcar.R;
 
 public class Login extends AppCompatActivity {
 
@@ -36,10 +38,11 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this, Home.class));
+                Intent intent = new Intent(Login.this, Home.class);
+                startActivity(intent);
+                finish();
             }
         });
-
     }
 
     public void getIds() {

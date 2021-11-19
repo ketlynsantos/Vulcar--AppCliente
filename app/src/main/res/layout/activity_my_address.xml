@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".MyAddress">
+    tools:context=".Activitys.MyAddress">
 
     <RelativeLayout
         android:id="@+id/relative_layout_1"
@@ -29,7 +29,7 @@
             android:text="Endereço"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="28dp" />
+            android:textSize="24dp" />
 
     </RelativeLayout>
 
@@ -49,7 +49,7 @@
             android:fontFamily="@font/bold"
             android:text="Endereço"
             android:textColor="@color/white"
-            android:textSize="25dp" />
+            android:textSize="22dp" />
 
         <TextView
             android:id="@+id/txt_address"
@@ -57,9 +57,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_1"
             android:fontFamily="@font/regular"
-            android:text="Rua Arnaldo Antônio"
+            android:text=""
             android:textColor="@color/white"
-            android:textSize="22dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/text_view_2"
@@ -81,9 +81,9 @@
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/text_view_2"
             android:fontFamily="@font/regular"
-            android:text="82"
+            android:text=""
             android:textColor="@color/white"
-            android:textSize="22dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/text_view_3"
@@ -94,7 +94,7 @@
             android:fontFamily="@font/bold"
             android:text="Bairro"
             android:textColor="@color/white"
-            android:textSize="25dp" />
+            android:textSize="22dp" />
 
         <TextView
             android:id="@+id/txt_neighborhood"
@@ -102,9 +102,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_3"
             android:fontFamily="@font/regular"
-            android:text="Vila Engenho Novo"
+            android:text=""
             android:textColor="@color/white"
-            android:textSize="22dp" />
+            android:textSize="20dp" />
 
         <LinearLayout
             android:id="@+id/linear_layout_1"
@@ -128,7 +128,7 @@
                     android:fontFamily="@font/bold"
                     android:text="Cidade"
                     android:textColor="@color/white"
-                    android:textSize="25dp" />
+                    android:textSize="22dp" />
 
                 <TextView
                     android:id="@+id/txt_city"
@@ -136,9 +136,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_view_4"
                     android:fontFamily="@font/regular"
-                    android:text="Barueri"
+                    android:text=""
                     android:textColor="@color/white"
-                    android:textSize="22dp" />
+                    android:textSize="20dp" />
 
             </LinearLayout>
 
@@ -156,16 +156,16 @@
                     android:fontFamily="@font/bold"
                     android:text="Estado"
                     android:textColor="@color/white"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
-                    android:id="@+id/txt_state"
+                    android:id="@+id/txt_uf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_view_5"
                     android:layout_toRightOf="@id/txt_city"
                     android:fontFamily="@font/regular"
-                    android:text="SP"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="22dp" />
 
@@ -182,7 +182,7 @@
             android:fontFamily="@font/bold"
             android:text="Cep"
             android:textColor="@color/white"
-            android:textSize="25dp" />
+            android:textSize="22dp" />
 
         <TextView
             android:id="@+id/txt_cep"
@@ -190,9 +190,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_6"
             android:fontFamily="@font/regular"
-            android:text="06861-240"
+            android:text=""
             android:textColor="@color/white"
-            android:textSize="22dp" />
+            android:textSize="20dp" />
 
     </RelativeLayout>
 

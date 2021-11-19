@@ -9,10 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.app.clientevulcar.MyAddress;
 import com.app.clientevulcar.R;
-
-import java.net.Inet4Address;
 
 public class EditAddress extends AppCompatActivity {
 
@@ -37,7 +34,9 @@ public class EditAddress extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EditAddress.this, MyAddress.class));
+                Intent intent = new Intent(EditAddress.this, MyAddress.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
