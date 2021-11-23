@@ -18,6 +18,7 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        getSupportActionBar().hide();
         getIds();
         bottomNavigationView.setSelectedItemId(R.id.profile);
 

@@ -13,4 +13,18 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.ClienteVulcar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ClienteVulcar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.ClienteVulcar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="tab_text" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:fontFamily">@font/semibold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18dp</item>
+    </style>
 </resources>

@@ -18,6 +18,7 @@ public class Requests extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
 
+        getSupportActionBar().hide();
         getIds();
         bottomNavigationView.setSelectedItemId(R.id.requests);
 

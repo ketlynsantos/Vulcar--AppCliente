@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.app.clientevulcar.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -15,7 +17,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Home extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
-    public ImageView imgGoToAdress;
+    public ImageView imgGoToAddress;
+    public TextView txtAddress;
+    public LinearLayout llGoAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +57,25 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        imgGoToAdress.setOnClickListener(new View.OnClickListener() {
+        imgGoToAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Home.this, MyAddress.class));
             }
         });
 
+        llGoAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, MyAddress.class));
+            }
+        });
     }
 
     private void getIds() {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        imgGoToAdress = findViewById(R.id.img_go_address);
+        imgGoToAddress = findViewById(R.id.img_go_address);
+        txtAddress = findViewById(R.id.txt_address);
+        llGoAddress = findViewById(R.id.ll_go_address);
     }
 }
