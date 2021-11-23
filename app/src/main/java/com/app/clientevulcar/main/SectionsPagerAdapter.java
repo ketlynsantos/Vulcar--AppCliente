@@ -1,6 +1,7 @@
 package com.app.clientevulcar.main;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -8,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.app.clientevulcar.Activitys.Search;
+import com.app.clientevulcar.Fragments.SearchServices;
+import com.app.clientevulcar.Fragments.SearchStore;
 import com.app.clientevulcar.R;
 
 /**
@@ -29,7 +33,17 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        Fragment fragment = null;
+        switch(position) {
+            case 0:
+                fragment = new SearchStore();
+                Toast.makeText(mContext, "Search Store", Toast.LENGTH_SHORT).show();
+                break;
+            case 1:
+                fragment = new SearchServices();
+                Toast.makeText(mContext, "Search Services", Toast.LENGTH_SHORT).show();
+        }
+        return fragment;
     }
 
     @Nullable
