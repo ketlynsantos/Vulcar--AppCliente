@@ -11,22 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClienteVulcar">
-        <activity android:name=".Activitys.EditAddress"></activity>
+        <activity
+            android:name=".Activitys.Search"
+            android:label="@string/title_activity_search"
+            android:theme="@style/Theme.ClienteVulcar.NoActionBar"></activity>
+        <activity
+            android:name=".Activitys.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activitys.EditAddress" />
         <activity android:name=".Activitys.MyAddress" />
         <activity android:name=".Activitys.Register2" />
         <activity android:name=".Activitys.Profile" />
         <activity android:name=".Activitys.Requests" />
-        <activity android:name=".Activitys.Search" />
         <activity android:name=".Activitys.Home" />
         <activity android:name=".Activitys.Register" />
         <activity android:name=".Activitys.Login" />
-        <activity android:name=".Activitys.SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".MainActivity" />
     </application>
 
