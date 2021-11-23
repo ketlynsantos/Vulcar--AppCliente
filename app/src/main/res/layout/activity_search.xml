@@ -84,6 +84,7 @@
         android:elevation="1dp" />
 
     <androidx.viewpager.widget.ViewPager
+        android:layout_marginTop="15dp"
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
