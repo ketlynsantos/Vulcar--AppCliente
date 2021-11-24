@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ public class Register extends AppCompatActivity {
     public EditText edtPhone;
     public EditText edtPassword;
     public EditText edtCpf;
-    public AppCompatButton btnRegister;
+    public ImageButton btnRegister;
     public ImageView imgArrowBack;
 
 
@@ -110,6 +111,14 @@ public class Register extends AppCompatActivity {
             edtName.requestFocus();
             edtName.setError("Apenas letras, por favor!");
             return false;
+        }   else if (cpf.length() == 0) {
+            edtCpf.requestFocus();
+            edtCpf.setError("Campo vazio");
+            return false;
+        } else if (cpf.length() != 14) {
+            edtCpf.requestFocus();
+            edtCpf.setError("CPF inválido!");
+            return false;
         } else if(email.length() == 0) {
             edtEmail.requestFocus();
             edtEmail.setError("Campo vazio.");
@@ -129,10 +138,6 @@ public class Register extends AppCompatActivity {
         } else if (password.length() < 5) {
             edtPassword.requestFocus();
             edtPassword.setError("Mínino 6 caracteres.");
-            return false;
-        }  else if (cpf.length() == 0) {
-            edtCpf.requestFocus();
-            edtCpf.setError("Campo vazio");
             return false;
         } else {
             return true;

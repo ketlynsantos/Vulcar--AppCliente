@@ -10,12 +10,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.app.clientevulcar.Model.Client;
 import com.app.clientevulcar.R;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import cz.msebera.android.httpclient.Header;
 
 public class Register2 extends AppCompatActivity {
     public EditText edtEndereco;
@@ -29,7 +35,12 @@ public class Register2 extends AppCompatActivity {
     public ImageView imgBack;
 
     // HOST Database
-    private String HOST ="http://172.20.10.5/vulcar_database";
+    //Connection MySQL
+    String HOST = "http://192.168.15.126/vulcar_database/Client/";
+    //String HOST = "http://172.20.10.5/vulcar_database/Client/";
+    RequestParams params = new RequestParams();
+    AsyncHttpClient cliente;
+    Client client = new Client();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +50,7 @@ public class Register2 extends AppCompatActivity {
         getSupportActionBar().hide();
         getIds();
         maskFormat();
+        cliente = new AsyncHttpClient();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,14 +58,89 @@ public class Register2 extends AppCompatActivity {
                 Intent intent = new Intent(Register2.this, Register.class);
                 startActivity(intent);
                 finish();
-
             }
         });
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerUsers();
+                montaObj();
+            }
+        });
+    }
+
+    private void montaObj() {
+        String name = getIntent().getStringExtra("name");
+        String cpf = getIntent().getStringExtra("cpf");
+        String email = getIntent().getStringExtra("email");
+        String phone = getIntent().getStringExtra("phone");
+        String password = getIntent().getStringExtra("password");
+
+        String endereco = edtEndereco.getText().toString();
+        String complemento = edtComp.getText().toString();
+        String numero = edtNum.getText().toString();
+        String bairro = edtBairro.getText().toString();
+        String cidade = edtCidade.getText().toString();
+        String uf = edtUF.getText().toString();
+        String cep = edtCep.getText().toString();
+        int sts = 1;
+
+        boolean checkValidations = validationRegister(endereco, numero, bairro,
+                cidade, uf, cep);
+
+        if(checkValidations == true){
+            client.setNome(name);
+            client.setCpf(cpf);
+            client.setEmail(email);
+            client.setPhone(phone);
+            client.setPassword(password);
+            client.setAddress(endereco);
+            client.setComplement(complemento);
+            client.setNumber(numero);
+            client.setNeighborhood(bairro);
+            client.setCity(cidade);
+            client.setUf(uf);
+            client.setCep(cep);
+            client.setSts(sts);
+            cadastrarClient(client);
+        } else {
+            Toast.makeText(this, "Falha ao cadastrar!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void cadastrarClient(Client client) {
+        String url = HOST+"create.php";
+
+        params.put("name", client.getNome());
+        params.put("cpf", client.getCpf());
+        params.put("email", client.getEmail());
+        params.put("phone", client.getPhone());
+        params.put("pass", client.getPassword());
+        params.put("address", client.getAddress());
+        params.put("number", client.getNumber());
+        params.put("complement", client.getComplement());
+        params.put("neighborhood", client.getNeighborhood());
+        params.put("city", client.getCity());
+        params.put("uf", client.getUf());
+        params.put("cep", client.getCep());
+        params.put("sts", client.getSts());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    Toast.makeText(Register2.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Register2.this, Login.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(Register2.this, "Falha ao criar a conta!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
             }
         });
     }
@@ -67,6 +154,7 @@ public class Register2 extends AppCompatActivity {
         edtUF = this.findViewById(R.id.edt_uf);
         edtCep = this.findViewById(R.id.edt_cep);
         btnRegister = this.findViewById(R.id.btn_register2);
+        imgBack = this.findViewById(R.id.img_back);
     }
 
     private void maskFormat(){
@@ -89,8 +177,8 @@ public class Register2 extends AppCompatActivity {
             edtNum.setError("Número vazio");
             return false;
         } else if (bairro.length() == 0){
-            edtNum.requestFocus();
-            edtNum.setError("Bairro vazio");
+            edtBairro.requestFocus();
+            edtBairro.setError("Bairro vazio");
             return false;
         } else if (cidade.length() == 0){
             edtCidade.requestFocus();
@@ -114,62 +202,6 @@ public class Register2 extends AppCompatActivity {
             return false;
         } else {
             return true;
-        }
-    }
-
-    private void registerUsers() {
-        //Puxando variáveis da Register
-        String name = getIntent().getStringExtra("name");
-        String cpf = getIntent().getStringExtra("cpf");
-        String email = getIntent().getStringExtra("email");
-        String phone = getIntent().getStringExtra("phone");
-        String password = getIntent().getStringExtra("password");
-
-
-        String endereco = edtEndereco.getText().toString();
-        String num = edtNum.getText().toString();
-        String bairro = edtBairro.getText().toString();
-        String comp = edtComp.getText().toString();
-        String cidade = edtCidade.getText().toString();
-        String uf = edtUF.getText().toString();
-        String cep = edtCep.getText().toString();
-        String sts = "6";
-
-        boolean checkValidations = validationRegister(endereco, num, bairro, cidade, uf, cep);
-        if(checkValidations == true){
-            String url = HOST + "/create.php";
-
-            Ion.with(Register2.this)
-                    .load(url)
-                    .setBodyParameter("nome", name)
-                    .setBodyParameter("cpf", cpf)
-                    .setBodyParameter("email", email)
-                    .setBodyParameter("tel", phone)
-                    .setBodyParameter("senha", password)
-                    .setBodyParameter("endereco", endereco)
-                    .setBodyParameter("num", num)
-                    .setBodyParameter("comp", comp)
-                    .setBodyParameter("bairro", bairro)
-                    .setBodyParameter("cidade", cidade)
-                    .setBodyParameter("uf", uf)
-                    .setBodyParameter("cep", cep)
-                    .setBodyParameter("sts", sts)
-
-                    .asJsonObject()
-                    .setCallback(new FutureCallback<JsonObject>() {
-                        @Override
-                        public void onCompleted(Exception e, JsonObject result) {
-                            // do stuff with the result or error
-                            if(result.get("CREATE").getAsString().equals("OK")){
-                                Toast.makeText(Register2.this, "Registrado com sucesso!", Toast.LENGTH_SHORT).show();
-                            } else if(result.get("CREATE").getAsString().equals("ERRO")) {
-                                Toast.makeText(Register2.this, "Erro no registro!", Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-                    });
-        } else {
-            Toast.makeText(Register2.this,"Ocorreu um erro!", Toast.LENGTH_SHORT).show();
         }
     }
 }
