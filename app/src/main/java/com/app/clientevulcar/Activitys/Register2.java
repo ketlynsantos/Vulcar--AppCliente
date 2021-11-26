@@ -36,8 +36,8 @@ public class Register2 extends AppCompatActivity {
 
     // HOST Database
     //Connection MySQL
-    String HOST = "http://192.168.15.126/vulcar_database/Client/";
-    //String HOST = "http://172.20.10.5/vulcar_database/Client/";
+    //String HOST = "http://192.168.15.126/vulcar_database/Client/";
+    String HOST = "http://172.20.10.5/vulcar_database/Client/";
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
     Client client = new Client();
