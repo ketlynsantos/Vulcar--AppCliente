@@ -12,21 +12,228 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/background_menu"
+        android:elevation="2dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
-        android:elevation="2dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
         app:menu="@menu/menu_navigator" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_centerInParent="true"
-        android:text="Perfil"/>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_photo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/img_corners"
+                    android:backgroundTint="@color/white" />
+
+                <TextView
+                    android:id="@+id/txt_name_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@id/img_photo"
+                    android:fontFamily="@font/semibold"
+                    android:text="Daniel Nascimento"
+                    android:textColor="@color/white"
+                    android:textSize="24dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_layout_2"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rl_edit_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/image_view_1"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_person" />
+
+                    <TextView
+                        android:id="@+id/text_view_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_toRightOf="@id/image_view_1"
+                        android:fontFamily="@font/semibold"
+                        android:text="Meus Dados"
+                        android:textColor="@color/white"
+                        android:textSize="22dp" />
+
+                    <TextView
+                        android:id="@+id/text_view_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_view_1"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="-5dp"
+                        android:layout_toRightOf="@id/image_view_1"
+                        android:fontFamily="@font/light"
+                        android:text="Alterar meus dados da conta"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_arrow"
+                        android:rotation="270" />
+
+                    <TextView
+                        android:id="@+id/text_view_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/text_view_2"
+                        android:layout_marginTop="15dp"
+                        android:alpha="0.1"
+                        android:background="@color/white"
+                        android:elevation="1dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_cars"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:id="@+id/image_view_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_car" />
+
+                    <TextView
+                        android:id="@+id/text_view_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_toRightOf="@id/image_view_2"
+                        android:fontFamily="@font/semibold"
+                        android:text="Automóveis"
+                        android:textColor="@color/white"
+                        android:textSize="22dp" />
+
+                    <TextView
+                        android:id="@+id/text_view_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_view_4"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="-5dp"
+                        android:layout_toRightOf="@id/image_view_2"
+                        android:fontFamily="@font/light"
+                        android:text="Meus automóveis"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_arrow"
+                        android:rotation="270" />
+
+                    <TextView
+                        android:id="@+id/text_view_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/text_view_5"
+                        android:layout_marginTop="15dp"
+                        android:alpha="0.1"
+                        android:background="@color/white"
+                        android:elevation="1dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_cars"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:id="@+id/image_view_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_logout"
+                        android:rotation="180"/>
+
+                    <TextView
+                        android:id="@+id/text_view_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_toRightOf="@id/image_view_2"
+                        android:fontFamily="@font/semibold"
+                        android:text="Sair"
+                        android:textColor="@color/white"
+                        android:textSize="22dp" />
+
+                    <TextView
+                        android:id="@+id/text_view_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_view_4"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="-5dp"
+                        android:layout_toRightOf="@id/image_view_2"
+                        android:fontFamily="@font/light"
+                        android:text="Fazer logout"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/text_view_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/text_view_5"
+                        android:layout_marginTop="15dp"
+                        android:alpha="0.1"
+                        android:background="@color/white"
+                        android:elevation="1dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>
