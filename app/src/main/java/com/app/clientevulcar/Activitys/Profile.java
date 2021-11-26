@@ -44,7 +44,6 @@ public class Profile extends AppCompatActivity {
         cliente = new AsyncHttpClient();
         montaObj();
 
-        id = getIntent().getStringExtra("id");
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -106,5 +105,6 @@ public class Profile extends AppCompatActivity {
     private void getIds(){
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         txtProfile = findViewById(R.id.txt_name_profile);
+        id = getIntent().getStringExtra("id");
     }
 }

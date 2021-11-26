@@ -30,7 +30,7 @@ public class Home extends AppCompatActivity {
     public ImageView imgGoToAddress;
     public TextView txtAddress;
     public LinearLayout llGoAddress;
-    String id;
+    public String id;
 
     //Connection MySQL
     //String HOST = "http://192.168.15.126/vulcar_database/Client/";
@@ -48,7 +48,7 @@ public class Home extends AppCompatActivity {
         cliente = new AsyncHttpClient();
 
         montaObj();
-        id = getIntent().getStringExtra("id");
+
         Intent intent_address = new Intent(Home.this, MyAddress.class);
         bottomNavigationView.setSelectedItemId(R.id.home);
 
@@ -110,6 +110,7 @@ public class Home extends AppCompatActivity {
                     JSONObject jsonarray = new JSONObject(new String (responseBody));
                     String address = jsonarray.getString("CLIENTE_ENDERECO");
                     String num = jsonarray.getString("CLIENTE_NUM");
+
                     txtAddress.setText(address+", "+num);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -128,6 +129,7 @@ public class Home extends AppCompatActivity {
         imgGoToAddress = findViewById(R.id.img_go_address);
         txtAddress = findViewById(R.id.txt_address);
         llGoAddress = findViewById(R.id.ll_go_address);
+        id = getIntent().getStringExtra("id");
 
     }
 }
