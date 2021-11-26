@@ -23,11 +23,108 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_navigator" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Pedidos"
-        android:textColor="@color/white" />
+    <RelativeLayout
+        android:id="@+id/relative_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp">
+
+        <TextView
+            android:id="@+id/text_view_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/semibold"
+            android:text="Meus Pedidos"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24dp" />
+
+        <RelativeLayout
+            android:id="@id/relative_layout_2"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@id/text_view_1"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/button_blue"
+            android:backgroundTint="@color/white"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@id/text_view_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/semibold"
+                android:text="Peça de novo"
+                android:textColor="@color/dark_blue"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/text_view_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_2"
+                android:background="@drawable/mini_border"
+                android:fontFamily="@font/regular"
+                android:padding="5dp"
+                android:text="1"
+                android:textColor="@color/dark_blue"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/txt_services"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_2"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/text_view_3"
+                android:fontFamily="@font/light"
+                android:padding="5dp"
+                android:text="Lavagem Interna"
+                android:textColor="@color/dark_blue"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/img_corners"
+                android:backgroundTint="@color/dark_blue" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_add_bag"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/button_blue"
+                android:fontFamily="@font/semibold"
+                android:text="Adiconar à sacola"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative_layout_2"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:id="@+id/text_view_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Histórico"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:fontFamily="@font/semibold"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>
