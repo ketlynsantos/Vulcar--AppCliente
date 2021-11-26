@@ -128,5 +128,6 @@ public class Home extends AppCompatActivity {
         imgGoToAddress = findViewById(R.id.img_go_address);
         txtAddress = findViewById(R.id.txt_address);
         llGoAddress = findViewById(R.id.ll_go_address);
+
     }
 }
