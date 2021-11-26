@@ -21,14 +21,15 @@ public class Requests extends AppCompatActivity {
     public TextView txtServices;
     public ImageView imgLogoBusiness;
     public AppCompatButton btnAddBag;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
-
         getSupportActionBar().hide();
         getIds();
         bottomNavigationView.setSelectedItemId(R.id.requests);
+        id = getIntent().getStringExtra("id");
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -37,19 +38,24 @@ public class Requests extends AppCompatActivity {
                     case R.id.requests:
                         return true;
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Home.class));
-                        overridePendingTransition(0,0);
+                        Intent intent_h = new Intent(Requests.this, Home.class);
+                        intent_h.putExtra("id", id);
+                        startActivity(intent_h);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(), Search.class));
-                        overridePendingTransition(0,0);
+                        Intent intent_s = new Intent(Requests.this, Search.class);
+                        intent_s.putExtra("id", id);
+                        startActivity(intent_s);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        Intent intent_p = new Intent(Requests.this, Profile.class);
+                        intent_p.putExtra("id", id);
+                        startActivity(intent_p);
                         overridePendingTransition(0, 0);
                         return true;
                 }
-
                 return false;
             }
 
