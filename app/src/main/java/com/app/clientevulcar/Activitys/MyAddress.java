@@ -47,7 +47,7 @@ public class MyAddress extends AppCompatActivity {
         getSupportActionBar().hide();
         getIds();
         cliente = new AsyncHttpClient();
-        id = getIntent().getStringExtra("id");
+
         montaObj();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -114,5 +114,6 @@ public class MyAddress extends AppCompatActivity {
         txtCity = findViewById(R.id.txt_city);
         txtUF = findViewById(R.id.txt_uf);
         txtCep = findViewById(R.id.txt_cep);
+        id = getIntent().getStringExtra("id");
     }
 }
