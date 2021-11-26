@@ -20,7 +20,7 @@ import com.app.clientevulcar.main.SectionsPagerAdapter;
 public class Search extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
-
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,7 @@ public class Search extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
 
         getIds();
-
+        id = getIntent().getStringExtra("id");
         bottomNavigationView.setSelectedItemId(R.id.search);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,19 +43,22 @@ public class Search extends AppCompatActivity {
                     case R.id.search:
                         return true;
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Home.class));
-                        overridePendingTransition(0,0);
-                        finish();
+                        Intent intent_h = new Intent(Search.this, Home.class);
+                        intent_h.putExtra("id", id);
+                        startActivity(intent_h);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.requests:
-                        startActivity(new Intent(getApplicationContext(), Requests.class));
-                        overridePendingTransition(0,0);
-                        finish();
+                        Intent intent_r = new Intent(Search.this, Requests.class);
+                        intent_r.putExtra("id", id);
+                        startActivity(intent_r);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        Intent intent_p = new Intent(Search.this, Profile.class);
+                        intent_p.putExtra("id", id);
+                        startActivity(intent_p);
                         overridePendingTransition(0, 0);
-                        finish();
                         return true;
                 }
                 return false;

@@ -10,9 +10,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.app.clientevulcar.Model.Client;
 import com.app.clientevulcar.R;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import cz.msebera.android.httpclient.Header;
 
 public class EditAddress extends AppCompatActivity {
 
@@ -26,6 +32,13 @@ public class EditAddress extends AppCompatActivity {
     EditText edtNewCep;
     AppCompatButton btnEditar;
 
+    String id;
+    //Connection MySQL
+    //String HOST = "http://192.168.15.126/vulcar_database/Client/";
+    String HOST = "http://172.20.10.5/vulcar_database/Client/";
+    RequestParams params = new RequestParams();
+    AsyncHttpClient cliente;
+    Client client = new Client();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +46,15 @@ public class EditAddress extends AppCompatActivity {
 
         getSupportActionBar().hide();
         getIds();
+        cliente = new AsyncHttpClient();
+        id = getIntent().getStringExtra("id");
         maskFormat();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditAddress.this, MyAddress.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
                 finish();
             }
@@ -47,19 +63,61 @@ public class EditAddress extends AppCompatActivity {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String address = edtNewAddress.getText().toString();
-                String number = edtNewNumber.getText().toString();
-                String neighborhood = edtNewNeighborhood.getText().toString();
-                String complement = edtNewComplement.getText().toString();
-                String city = edtNewCity.getText().toString();
-                String uf = edtNewUF.getText().toString();
-                String cep = edtNewCep.getText().toString();
+                montaObj();
+            }
+        });
+    }
 
-                boolean checkValidations = validationEdit(address, number, neighborhood, city, uf, cep);
+    private void montaObj() {
+        String address = edtNewAddress.getText().toString();
+        String number = edtNewNumber.getText().toString();
+        String neighborhood = edtNewNeighborhood.getText().toString();
+        String complement = edtNewComplement.getText().toString();
+        String city = edtNewCity.getText().toString();
+        String uf = edtNewUF.getText().toString();
+        String cep = edtNewCep.getText().toString();
 
-                if(checkValidations == true){
-                    Toast.makeText(EditAddress.this, "Sucesso!", Toast.LENGTH_SHORT).show();
+        boolean checkValidations = validationEdit(address, number, neighborhood, city, uf, cep);
+        if(checkValidations == true){
+            client.setId(id);
+            client.setAddress(address);
+            client.setNumber(number);
+            client.setNeighborhood(neighborhood);
+            client.setComplement(complement);
+            client.setCity(city);
+            client.setUf(uf);
+            client.setCep(cep);
+            updateAddres(client);
+        }
+    }
+
+    private void updateAddres(Client client) {
+        String url = HOST+"update_address.php";
+
+        params.put("id", client.getId());
+        params.put("address", client.getAddress());
+        params.put("number", client.getNumber());
+        params.put("neighborhood", client.getNeighborhood());
+        params.put("complement", client.getComplement());
+        params.put("city", client.getCity());
+        params.put("uf", client.getUf());
+        params.put("cep", client.getCep());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    Toast.makeText(EditAddress.this, "Endereço atualizado!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(EditAddress.this, MyAddress.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
+                    finish();
                 }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
             }
         });
     }
