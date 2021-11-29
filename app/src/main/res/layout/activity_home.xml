@@ -57,12 +57,27 @@
 
         </RelativeLayout>
 
+    <ListView
+        android:id="@+id/lv_vehicles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative_layout_2"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/linha"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_below="@id/lv_vehicles"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
     <ListView
         android:id="@+id/lv_business"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/relative_layout_2"
+        android:layout_below="@id/linha"
         android:layout_marginTop="30dp"/>
 
 </RelativeLayout>
