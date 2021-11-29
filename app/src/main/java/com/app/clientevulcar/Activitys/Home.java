@@ -3,15 +3,20 @@ package com.app.clientevulcar.Activitys;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.clientevulcar.Adapter.AdapterLojas;
+import com.app.clientevulcar.Model.Business;
 import com.app.clientevulcar.Model.Client;
 import com.app.clientevulcar.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,8 +24,11 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -30,6 +38,7 @@ public class Home extends AppCompatActivity {
     public ImageView imgGoToAddress;
     public TextView txtAddress;
     public LinearLayout llGoAddress;
+    public ListView lvBusiness;
     public String id;
 
     //Connection MySQL
@@ -38,6 +47,9 @@ public class Home extends AppCompatActivity {
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
     Client client = new Client();
+
+    Activity context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +58,10 @@ public class Home extends AppCompatActivity {
         getSupportActionBar().hide();
         getIds();
         cliente = new AsyncHttpClient();
+        context = Home.this;
 
         montaObj();
+        carregarLojas();
 
         Intent intent_address = new Intent(Home.this, MyAddress.class);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -98,6 +112,49 @@ public class Home extends AppCompatActivity {
         });
     }
 
+    private void carregarLojas() {
+        String url = HOST + "Select/select_business.php";
+
+        cliente.post(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    listarLojas(new String(responseBody));
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
+    private void listarLojas(String resposta) {
+        final ArrayList<Business> lista = new ArrayList<>();
+
+        try {
+            JSONArray jsonarray = new JSONArray(resposta);
+
+            for (int i = 0; i < jsonarray.length(); i++){
+                Business b = new Business();
+
+                b.setId(jsonarray.getJSONObject(i).getString("TB_LOJA_ID"));
+                b.setNome(jsonarray.getJSONObject(i).getString("TB_LOJA_NOME"));
+                //b.setImg(jsonarray.getJSONObject(i).getString("TB_LOJA_IMG"));
+
+                lista.add(b);
+
+            }
+
+            AdapterLojas adapter = new AdapterLojas(context, R.layout.adapter_lojas, R.id.txt_id, lista);
+            lvBusiness.setAdapter(adapter);
+
+        } catch(Exception erro) {
+            Log.d("erro", "erro"+erro);
+        }
+    }
+
     private void montaObj() {
         String url = HOST+"Select/select_profile.php";
         client.setId(id);
@@ -130,6 +187,7 @@ public class Home extends AppCompatActivity {
         txtAddress = findViewById(R.id.txt_address);
         llGoAddress = findViewById(R.id.ll_go_address);
         id = getIntent().getStringExtra("id");
+        lvBusiness = findViewById(R.id.lv_business);
 
     }
 }

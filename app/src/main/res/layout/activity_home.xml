@@ -23,10 +23,6 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_navigator" />
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll_view_1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <RelativeLayout
             android:id="@+id/relative_layout_2"
@@ -61,6 +57,12 @@
 
         </RelativeLayout>
 
-    </androidx.core.widget.NestedScrollView>
+
+    <ListView
+        android:id="@+id/lv_business"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative_layout_2"
+        android:layout_marginTop="30dp"/>
 
 </RelativeLayout>
