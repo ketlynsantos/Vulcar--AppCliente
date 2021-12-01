@@ -20,7 +20,8 @@ import com.app.clientevulcar.main.SectionsPagerAdapter;
 public class Search extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
-    String id;
+    public String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -3,6 +3,8 @@ package com.app.clientevulcar.Activitys;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.app.clientevulcar.Adapter.AdapterLojas;
 import com.app.clientevulcar.Adapter.AdapterVehicles;
+import com.app.clientevulcar.Adapter.RecyclerAdapterVehicles;
 import com.app.clientevulcar.Model.Business;
 import com.app.clientevulcar.Model.Client;
 import com.app.clientevulcar.Model.Vehicle;
@@ -48,12 +51,14 @@ public class Home extends AppCompatActivity {
     Vehicle vehicle;
 
     //Connection MySQL
-    //String HOST = "http://192.168.15.108/vulcar_database/Client/";
-    String HOST = "http://172.20.10.5/vulcar_database/Client/";
+    String HOST = "http://192.168.15.127/vulcar_database/Client/";
+    //String HOST = "http://172.20.10.5/vulcar_database/Client/";
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
 
     Activity context;
+
+    public RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +75,7 @@ public class Home extends AppCompatActivity {
         carregarLojas();
         carregarVehicles();
 
+        //lvVehicle.setRotation(-90);
         Intent intent_address = new Intent(Home.this, MyAddress.class);
         bottomNavigationView.setSelectedItemId(R.id.home);
 
@@ -126,6 +132,7 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     private void carregarVehicles() {
@@ -138,6 +145,7 @@ public class Home extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if(statusCode == 200){
                     listarVehicles(new String(responseBody));
+                    listarTeste(new String(responseBody));
                 }
             }
 
@@ -146,6 +154,35 @@ public class Home extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void listarTeste(String resposta) {
+        final ArrayList<Vehicle> lista = new ArrayList<>();
+
+        try {
+            JSONArray jsonarray = new JSONArray(resposta);
+
+            for (int i = 0; i < jsonarray.length(); i++){
+                Vehicle v = new Vehicle();
+
+                v.setId(jsonarray.getJSONObject(i).getString("id"));
+                v.setModelo(jsonarray.getJSONObject(i).getString("modelo"));
+                v.setMarca(jsonarray.getJSONObject(i).getString("marca"));
+                v.setCor(jsonarray.getJSONObject(i).getString("cor"));
+                v.setCategoria(jsonarray.getJSONObject(i).getString("categoria"));
+
+                lista.add(v);
+
+            }
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+            recyclerView.setLayoutManager(linearLayoutManager);
+            RecyclerAdapterVehicles adapter = new RecyclerAdapterVehicles(this, lista);
+            recyclerView.setAdapter(adapter);
+
+        } catch(Exception erro) {
+            Log.d("erro", "erro"+erro);
+        }
     }
 
     private void listarVehicles(String resposta) {
@@ -253,6 +290,7 @@ public class Home extends AppCompatActivity {
         lvBusiness = findViewById(R.id.lv_business);
         lvVehicle = findViewById(R.id.lv_vehicles);
         btnRegisterCar = findViewById(R.id.btn_register_car);
+        recyclerView = findViewById(R.id.recycler);
     }
 
     private void getModels(){

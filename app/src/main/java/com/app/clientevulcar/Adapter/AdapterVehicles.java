@@ -43,6 +43,8 @@ public class AdapterVehicles extends ArrayAdapter<Vehicle> {
         txtMarca.setText(lista.get(position).getMarca());
         txtCor.setText(lista.get(position).getCor());
         txtCategoria.setText(lista.get(position).getCategoria());
+
+        //itemView.setRotation(90);
         return itemView;
     }
 }

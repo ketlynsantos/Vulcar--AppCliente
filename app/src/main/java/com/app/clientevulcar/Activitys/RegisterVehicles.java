@@ -33,8 +33,9 @@ public class RegisterVehicles extends AppCompatActivity {
     String id, brandId, categoryId;
 
     //Connection MySQL
-    //String HOST = "http://192.168.15.108/vulcar_database/Client/";
-    String HOST = "http://172.20.10.5/vulcar_database/Client/";
+    String HOST = "http://192.168.15.127/vulcar_database/Client/";
+    //String HOST = "http://172.20.10.5/vulcar_database/Client/";
+
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
     Client client = new Client();
