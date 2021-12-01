@@ -2,6 +2,7 @@ package com.app.clientevulcar.Activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -40,13 +41,14 @@ public class Home extends AppCompatActivity {
     public ImageView imgGoToAddress;
     public TextView txtAddress;
     public LinearLayout llGoAddress;
+    public AppCompatButton btnRegisterCar;
     public ListView lvBusiness, lvVehicle;
     public String id;
     Client client;
     Vehicle vehicle;
 
     //Connection MySQL
-    //String HOST = "http://192.168.15.126/vulcar_database/Client/";
+    //String HOST = "http://192.168.15.108/vulcar_database/Client/";
     String HOST = "http://172.20.10.5/vulcar_database/Client/";
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -113,6 +115,15 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 intent_address.putExtra("id", id);
                 startActivity(intent_address);
+            }
+        });
+
+        btnRegisterCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, RegisterVehicles.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
             }
         });
     }
@@ -241,6 +252,7 @@ public class Home extends AppCompatActivity {
         id = getIntent().getStringExtra("id");
         lvBusiness = findViewById(R.id.lv_business);
         lvVehicle = findViewById(R.id.lv_vehicles);
+        btnRegisterCar = findViewById(R.id.btn_register_car);
     }
 
     private void getModels(){

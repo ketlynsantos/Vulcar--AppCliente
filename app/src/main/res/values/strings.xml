@@ -3,4 +3,67 @@
     <string name="title_activity_search">Search</string>
     <string name="tab_text_1">Estabelecimentos</string>
     <string name="tab_text_2">Serviços</string>
+
+    <string-array name="brand">
+        <item>Marca</item>
+        <item>HONDA</item>
+        <item>FIAT</item>
+        <item>FORD</item>
+        <item>CHEVROLET</item>
+        <item>CHERY</item>
+        <item>DODGE</item>
+        <item>JAC</item>
+        <item>JAGUAR</item>
+        <item>LAND ROVER</item>
+        <item>LEXUS</item>
+        <item>MCLAREN</item>
+        <item>MASERATI</item>
+        <item>MINI</item>
+        <item>ROLLS-ROYCE</item>
+        <item>JEEP</item>
+        <item>NISSAN</item>
+        <item>MERCEDES-BENZ</item>
+        <item>PEUGEOT</item>
+        <item>VOLKSWAGEM</item>
+        <item>KIA</item>
+        <item>MITSUBISHI</item>
+        <item>HYUNDAI</item>
+        <item>BMW</item>
+        <item>RENAULT</item>
+        <item>TOYOTA</item>
+        <item>AUDI</item>
+        <item>BUGATTI</item>
+        <item>FERRARI</item>
+        <item>SUBARU</item>
+        <item>ASTON MARTIN</item>
+        <item>TESLA</item>
+        <item>TROLLER</item>
+        <item>VOLVO</item>
+        <item>PORSCHE</item>
+        <item>LAMBORGHINI</item>
+        <item>CITROEN</item>
+        <item>YAMAHA</item>
+        <item>DUCATI</item>
+        <item>KAWASAKI</item>
+        <item>HARLEY-DAVIDSON</item>
+        <item>SHINERAY</item>
+        <item>SUZUKI</item>
+        <item>TRIUMPH</item>
+        <item>OUTRA</item>
+    </string-array>
+
+    <string-array name="category">
+        <item>Categoria</item>
+        <item>RACING</item>
+        <item>SEDAN</item>
+        <item>PICKUP</item>
+        <item>UTILITÁRIO</item>
+        <item>WAGON</item>
+        <item>HATCH</item>
+        <item>MOTOCICLETA</item>
+        <item>COUPÊ</item>
+        <item>SUV</item>
+        <item>OFF-ROAD</item>
+        <item>OUTRO</item>
+    </string-array>
 </resources>

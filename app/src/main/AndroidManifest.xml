@@ -11,15 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClienteVulcar">
+        <activity android:name=".Activitys.RegisterVehicles"></activity>
         <activity
             android:name=".Activitys.Search"
             android:label="@string/title_activity_search"
-            android:theme="@style/Theme.ClienteVulcar.NoActionBar"></activity>
-        <activity
-            android:name=".Activitys.SplashScreen">
+            android:theme="@style/Theme.ClienteVulcar.NoActionBar" />
+        <activity android:name=".Activitys.SplashScreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Activitys.EditAddress" />
