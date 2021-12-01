@@ -10,10 +10,23 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.app.clientevulcar.Model.Client;
 import com.app.clientevulcar.R;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.HttpDelete;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URI;
+
+import cz.msebera.android.httpclient.Header;
 
 public class Register extends AppCompatActivity {
 
@@ -25,7 +38,6 @@ public class Register extends AppCompatActivity {
     public EditText edtCpf;
     public ImageButton btnRegister;
     public ImageView imgArrowBack;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +70,6 @@ public class Register extends AppCompatActivity {
                 String phone = edtPhone.getText().toString();
                 String password = edtPassword.getText().toString();
                 String cpf = edtCpf.getText().toString();
-
                 boolean checkValidations = validationRegister(name, email, phone, password, cpf);
 
                 Intent intent = new Intent(Register.this, Register2.class);

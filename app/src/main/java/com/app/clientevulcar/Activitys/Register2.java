@@ -21,6 +21,9 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import cz.msebera.android.httpclient.Header;
 
 public class Register2 extends AppCompatActivity {
@@ -36,11 +39,12 @@ public class Register2 extends AppCompatActivity {
 
     // HOST Database
     //Connection MySQL
-    //String HOST = "http://192.168.15.126/vulcar_database/Client/";
+    //String HOST = "http://192.168.15.108/vulcar_database/Client/";
     String HOST = "http://172.20.10.5/vulcar_database/Client/";
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
     Client client = new Client();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,6 +148,7 @@ public class Register2 extends AppCompatActivity {
             }
         });
     }
+
 
     private void getIds(){
         edtEndereco = this.findViewById(R.id.edt_endereco);
