@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.app.clientevulcar.Model.Client;
 import com.app.clientevulcar.R;
+import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -25,8 +26,8 @@ public class Login extends AppCompatActivity {
 
     public TextView txtRegister;
     public TextView txtForgetPassword;
-    public EditText edtEmail;
-    public EditText edtPassword;
+    public TextInputEditText edtEmail;
+    public TextInputEditText edtPassword;
     public AppCompatButton btnLogin;
 
     //Connection MySQL
