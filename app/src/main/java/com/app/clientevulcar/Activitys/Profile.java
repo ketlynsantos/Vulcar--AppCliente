@@ -29,8 +29,9 @@ public class Profile extends AppCompatActivity {
     String id;
 
     //Connection MySQL
-    String HOST = "http://192.168.15.127/vulcar_database/Client/";
+    //String HOST = "http://192.168.15.127/vulcar_database/Client/";
     //String HOST = "http://172.20.10.5/vulcar_database/Client/";
+    String HOST = "http://192.168.15.120/Vulcar--Syncmysql/Client/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;

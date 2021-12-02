@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -44,15 +45,17 @@ public class Home extends AppCompatActivity {
     public ImageView imgGoToAddress;
     public TextView txtAddress;
     public LinearLayout llGoAddress;
-    public AppCompatButton btnRegisterCar;
+    public ImageButton btnRegisterCar;
     public ListView lvBusiness, lvVehicle;
     public String id;
     Client client;
     Vehicle vehicle;
 
     //Connection MySQL
-    String HOST = "http://192.168.15.127/vulcar_database/Client/";
+    //String HOST = "http://192.168.15.127/vulcar_database/Client/";
     //String HOST = "http://172.20.10.5/vulcar_database/Client/";
+    String HOST = "http://192.168.15.120/Vulcar--Syncmysql/Client/";
+
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
 
@@ -144,7 +147,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if(statusCode == 200){
-                    listarVehicles(new String(responseBody));
+                    //listarVehicles(new String(responseBody));
                     listarTeste(new String(responseBody));
                 }
             }
@@ -185,32 +188,32 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    private void listarVehicles(String resposta) {
-        final ArrayList<Vehicle> lista = new ArrayList<>();
-
-        try {
-            JSONArray jsonarray = new JSONArray(resposta);
-
-            for (int i = 0; i < jsonarray.length(); i++){
-                Vehicle v = new Vehicle();
-
-                v.setId(jsonarray.getJSONObject(i).getString("id"));
-                v.setModelo(jsonarray.getJSONObject(i).getString("modelo"));
-                v.setMarca(jsonarray.getJSONObject(i).getString("marca"));
-                v.setCor(jsonarray.getJSONObject(i).getString("cor"));
-                v.setCategoria(jsonarray.getJSONObject(i).getString("categoria"));
-
-                lista.add(v);
-
-            }
-
-            AdapterVehicles adapter = new AdapterVehicles(context, R.layout.adapter_vehicles, R.id.txt_id, lista);
-            lvVehicle.setAdapter(adapter);
-
-        } catch(Exception erro) {
-            Log.d("erro", "erro"+erro);
-        }
-    }
+//    private void listarVehicles(String resposta) {
+//        final ArrayList<Vehicle> lista = new ArrayList<>();
+//
+//        try {
+//            JSONArray jsonarray = new JSONArray(resposta);
+//
+//            for (int i = 0; i < jsonarray.length(); i++){
+//                Vehicle v = new Vehicle();
+//
+//                v.setId(jsonarray.getJSONObject(i).getString("id"));
+//                v.setModelo(jsonarray.getJSONObject(i).getString("modelo"));
+//                v.setMarca(jsonarray.getJSONObject(i).getString("marca"));
+//                v.setCor(jsonarray.getJSONObject(i).getString("cor"));
+//                v.setCategoria(jsonarray.getJSONObject(i).getString("categoria"));
+//
+//                lista.add(v);
+//
+//            }
+//
+//            AdapterVehicles adapter = new AdapterVehicles(context, R.layout.adapter_vehicles, R.id.txt_id, lista);
+//            lvVehicle.setAdapter(adapter);
+//
+//        } catch(Exception erro) {
+//            Log.d("erro", "erro"+erro);
+//        }
+//    }
 
     private void carregarLojas() {
         String url = HOST + "Select/select_business.php";
@@ -288,7 +291,7 @@ public class Home extends AppCompatActivity {
         llGoAddress = findViewById(R.id.ll_go_address);
         id = getIntent().getStringExtra("id");
         lvBusiness = findViewById(R.id.lv_business);
-        lvVehicle = findViewById(R.id.lv_vehicles);
+        //lvVehicle = findViewById(R.id.lv_vehicles);
         btnRegisterCar = findViewById(R.id.btn_register_car);
         recyclerView = findViewById(R.id.recycler);
     }

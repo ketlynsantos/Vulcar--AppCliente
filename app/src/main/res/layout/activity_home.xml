@@ -23,7 +23,6 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_navigator" />
 
-
     <RelativeLayout
         android:id="@+id/relative_layout_2"
         android:layout_width="wrap_content"
@@ -55,48 +54,88 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/text_view_3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/ll_go_address"
+            android:alpha="0.1"
+            android:background="@color/white"
+            android:elevation="1dp" />
+
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/lv_vehicles"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scrollbars="vertical"
+    <TextView
+        android:id="@+id/text_view_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meus Automóveis"
         android:layout_below="@id/relative_layout_2"
-        android:layout_marginTop="30dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recycler"
-        android:layout_below="@id/lv_vehicles"
-        android:orientation="horizontal"/>
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_register_car"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recycler"
-        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:textSize="18dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:background="@drawable/button_blue"
-        android:backgroundTint="@color/clear_blue"
-        android:fontFamily="@font/bold"
-        android:padding="10dp"
-        android:text="Cadastrar Carro"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20dp"/>
+        android:fontFamily="@font/semibold"
+        android:layout_marginTop="15dp" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/text_view_1"
+        android:id="@+id/horizonatal_scroll"
+        android:layout_marginEnd="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycler"
+                android:orientation="horizontal"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_border_color"
+                android:padding="2dp">
+
+                <ImageButton
+                    android:id="@+id/btn_register_car"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:background="@drawable/img_corners"
+                    android:backgroundTint="@color/clear_blue"
+                    android:src="@drawable/ic_add"
+                    android:fontFamily="@font/bold"
+                    android:padding="10dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
     <TextView
         android:id="@+id/linha"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white"
-        android:layout_below="@id/btn_register_car"
-        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empresas"
+        android:layout_below="@id/horizonatal_scroll"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/semibold"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"/>
 
     <ListView
@@ -104,6 +143,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linha"
-        android:layout_marginTop="36dp"/>
+        android:scrollbars="none"
+        android:divider="@android:color/transparent"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"/>
 
 </RelativeLayout>
