@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:background="@drawable/textbox">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:id="@+id/relative_layout_1"
+       android:layout_height="wrap_content">
+
+       <ImageView
+           android:id="@+id/img_logo"
+           android:layout_width="60dp"
+           android:layout_height="60dp"
+           android:background="@drawable/img_corners"
+           android:backgroundTint="@color/dark_blue" />
+
+       <TextView
+           android:id="@+id/txt_name_business"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:fontFamily="@font/semibold"
+           android:layout_toRightOf="@id/img_logo"
+           android:text="Kety Lavagens"
+           android:layout_centerVertical="true"
+           android:layout_marginStart="15dp"
+           android:textColor="@color/dark_blue"
+           android:textSize="20dp" />
+
+
+   </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_view_3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/relative_layout_1"
+        android:alpha="0.1"
+        android:background="#14374651"
+        android:elevation="1dp" />
+
+</RelativeLayout>

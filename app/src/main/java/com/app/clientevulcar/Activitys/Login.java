@@ -48,7 +48,6 @@ public class Login extends AppCompatActivity {
         getIds();
         cliente = new AsyncHttpClient();
 
-
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +58,8 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cliente.setTimeout(2000);
+                cliente.setMaxRetriesAndTimeout(1, 5000);
                 montaObj();
             }
         });

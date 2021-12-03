@@ -86,6 +86,9 @@
         android:layout_marginTop="10dp"
         android:layout_below="@id/text_view_1"
         android:id="@+id/horizonatal_scroll"
+        android:scrollbars="none"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:layout_marginEnd="15dp">
 
         <LinearLayout
@@ -97,6 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recycler"
+                android:scrollbars="none"
                 android:orientation="horizontal"/>
 
             <RelativeLayout
