@@ -37,11 +37,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch(position) {
             case 0:
                 fragment = new SearchStore();
-                Toast.makeText(mContext, "Search Store", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
                 fragment = new SearchServices();
-                Toast.makeText(mContext, "Search Services", Toast.LENGTH_SHORT).show();
         }
         return fragment;
     }

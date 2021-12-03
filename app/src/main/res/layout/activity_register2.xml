@@ -116,7 +116,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_num_layout"
             style="@style/EditTextInputLayout"
-            android:layout_width="80dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/edt_complemento_layout"
             android:layout_below="@id/edt_endereco_layout"
@@ -206,7 +206,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_uf_layout"
             style="@style/EditTextInputLayout"
-            android:layout_width="80dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/edt_cidade_layout"
             android:layout_below="@id/edt_bairro_layout"
@@ -256,7 +256,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
-                android:inputType="text"
+                android:inputType="number"
                 android:padding="10dp"
                 android:importantForAutofill="no"
                 android:textColor="@color/white"
