@@ -29,7 +29,6 @@
            android:textColor="@color/dark_blue"
            android:textSize="20dp" />
 
-
    </RelativeLayout>
 
     <TextView
@@ -40,7 +39,78 @@
         android:layout_marginBottom="10dp"
         android:layout_below="@id/relative_layout_1"
         android:alpha="0.1"
-        android:background="#14374651"
+        android:background="#7C374651"
         android:elevation="1dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/img_corners"
+        android:backgroundTint="@color/green"
+        android:src="@drawable/ic_check"
+        android:id="@+id/img_check"
+        android:padding="2dp"
+        android:layout_below="@id/text_view_3"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pedido concluído"
+        android:textSize="16dp"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/light"
+        android:layout_below="@id/text_view_3"
+        android:layout_toRightOf="@id/img_check"
+        android:layout_marginStart="15dp"/>
+
+    <TextView
+        android:id="@+id/txt_qntd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_check"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/mini_border"
+        android:fontFamily="@font/regular"
+        android:padding="2dp"
+        android:text="1"
+        android:textColor="@color/dark_blue"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/txt_services"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lavagem Interna"
+        android:textSize="16dp"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/light"
+        android:layout_below="@id/img_check"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/txt_qntd"
+        android:layout_marginStart="15dp"/>
+
+    <TextView
+        android:id="@+id/text_view_4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/txt_services"
+        android:alpha="0.1"
+        android:background="#7C374651"
+        android:elevation="1dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Fazer pedido novamente"
+        android:textAllCaps="false"
+        android:fontFamily="@font/semibold"
+        android:textColor="@color/clear_blue"
+        android:id="@+id/btn_ask_again"
+        android:textSize="16dp"
+        android:layout_below="@id/text_view_4"
+        android:background="@android:color/transparent"/>
+
 
 </RelativeLayout>

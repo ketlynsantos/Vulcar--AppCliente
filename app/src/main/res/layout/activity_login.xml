@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
                 android:inputType="textPassword"
-                android:padding="10dp"
+                android:padding="8dp"
                 android:importantForAutofill="no"
                 android:textColor="@color/white"
                 android:textSize="16dp" />

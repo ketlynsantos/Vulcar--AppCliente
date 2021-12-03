@@ -10,5 +10,6 @@
     <color name="dark_blue">#2F343D</color>
     <color name="clear_blue">#64B5F6</color>
     <color name="white_blue">#EEF7FE</color>
+    <color name="green">#8FF664</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#FFFFFF</color>
 </resources>
