@@ -177,7 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/edt_phone_layout"
             android:layout_marginBottom="15dp"
-            android:hint="Password"
+            android:hint="Senha"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -185,6 +185,7 @@
             app:boxStrokeColor="@color/white"
             app:endIconMode="password_toggle"
             app:endIconTint="#ABFFFFFF"
+            app:endIconCheckable="false"
             app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:hintTextColor="@color/white">
 
@@ -194,7 +195,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
                 android:inputType="textPassword"
-                android:padding="10dp"
+                android:padding="8dp"
                 android:importantForAutofill="no"
                 android:textColor="@color/white"
                 android:textSize="16dp" />

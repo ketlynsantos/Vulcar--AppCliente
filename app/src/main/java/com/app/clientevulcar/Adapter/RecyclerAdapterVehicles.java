@@ -1,15 +1,19 @@
 package com.app.clientevulcar.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
+import com.app.clientevulcar.Activitys.EditVehicles;
+import com.app.clientevulcar.Activitys.MyVehicle;
 import com.app.clientevulcar.Model.Vehicle;
 import com.app.clientevulcar.R;
 
@@ -40,6 +44,20 @@ public class RecyclerAdapterVehicles extends RecyclerView.Adapter<RecyclerAdapte
         holder.txtMarca.setText(lista.get(position).getMarca());
         holder.txtCor.setText(lista.get(position).getCor());
         holder.txtCategoria.setText(lista.get(position).getCategoria());
+
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(context, MyVehicle.class);
+                it.putExtra("idVehicle", lista.get(position).getId());
+                it.putExtra("modelo", lista.get(position).getModelo());
+                it.putExtra("marca", lista.get(position).getMarca());
+                it.putExtra("categoria", lista.get(position).getCategoria());
+                it.putExtra("cor", lista.get(position).getCor());
+                it.putExtra("id", lista.get(position).getClienteId());
+                context.startActivity(it);
+            }
+        });
     }
 
     @Override
@@ -54,6 +72,7 @@ public class RecyclerAdapterVehicles extends RecyclerView.Adapter<RecyclerAdapte
         TextView txtMarca;
         TextView txtCor;
         TextView txtCategoria;
+        RelativeLayout relativeLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -63,7 +82,7 @@ public class RecyclerAdapterVehicles extends RecyclerView.Adapter<RecyclerAdapte
             txtMarca = itemView.findViewById(R.id.txt_marca);
             txtCor = itemView.findViewById(R.id.txt_cor);
             txtCategoria = itemView.findViewById(R.id.txt_categoria);
-
+            relativeLayout = itemView.findViewById(R.id.relative_layout);
         }
     }
 }

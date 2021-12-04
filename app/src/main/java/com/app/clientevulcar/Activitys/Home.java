@@ -2,7 +2,6 @@ package com.app.clientevulcar.Activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,10 +16,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.clientevulcar.Adapter.AdapterLojas;
-import com.app.clientevulcar.Adapter.AdapterVehicles;
 import com.app.clientevulcar.Adapter.RecyclerAdapterVehicles;
 import com.app.clientevulcar.Model.Business;
 import com.app.clientevulcar.Model.Client;
@@ -52,9 +49,9 @@ public class Home extends AppCompatActivity {
     Vehicle vehicle;
 
     //Connection MySQL
-    String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
+    //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
     //String HOST = "http://172.20.10.6/Vulcar--Syncmysql/Client/";
-    //String HOST = "http://192.168.0.107/Vulcar--Syncmysql/Client/";
+    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -173,6 +170,7 @@ public class Home extends AppCompatActivity {
                 v.setMarca(jsonarray.getJSONObject(i).getString("marca"));
                 v.setCor(jsonarray.getJSONObject(i).getString("cor"));
                 v.setCategoria(jsonarray.getJSONObject(i).getString("categoria"));
+                v.setClienteId(jsonarray.getJSONObject(i).getString("id_cliente"));
 
                 lista.add(v);
 
@@ -259,7 +257,7 @@ public class Home extends AppCompatActivity {
     }
 
     private void montaObj() {
-        String url = HOST+"Select/select_profile.php";
+        String url = HOST + "Select/select_profile.php";
         client.setId(id);
         params.put("id", client.getId());
 

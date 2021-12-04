@@ -90,6 +90,7 @@
             app:boxCornerRadiusTopStart="10dp"
             app:boxStrokeColor="@color/white"
             app:endIconMode="password_toggle"
+            app:endIconCheckable="false"
             app:endIconTint="#ABFFFFFF"
             app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:hintTextColor="@color/white">

@@ -8,48 +8,32 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.app.clientevulcar.Model.Client;
-import com.app.clientevulcar.Model.Vehicle;
 import com.app.clientevulcar.R;
 import com.google.android.material.textfield.TextInputEditText;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
-import cz.msebera.android.httpclient.Header;
-
-public class RegisterVehicles extends AppCompatActivity {
+public class EditVehicles extends AppCompatActivity {
 
     public ImageView imgBack;
-    public TextInputEditText edtModel, edtColor;
-    public Spinner spinnerCategory, spinnerBrand;
-    public AppCompatButton btnRegister;
-
-    public String id, brandId, categoryId;
-
-    //Connection MySQL
-    //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
-    //String HOST = "http://172.20.10.5/vulcar_database/Client/";
-    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
-
-    RequestParams params = new RequestParams();
-    AsyncHttpClient cliente;
-    Client client = new Client();
-    Vehicle vehicle = new Vehicle();
+    public TextInputEditText edtModel;
+    public TextInputEditText edtColor;
+    public Spinner spinnerCategory;
+    public Spinner spinnerBrand;
+    public AppCompatButton btnAlterVehicles;
+    public String idVehicle, idCliente;
+    public String model;
+    public String brand, brandId;
+    public String category, categoryId;
+    public String color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_vehicles);
-
-        id = getIntent().getStringExtra("id");
-        cliente = new AsyncHttpClient();
+        setContentView(R.layout.activity_edit_vehicles);
 
         getSupportActionBar().hide();
         getIds();
@@ -57,17 +41,22 @@ public class RegisterVehicles extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegisterVehicles.this, Home.class);
-                intent.putExtra("id", id);
+                Intent intent = new Intent(EditVehicles.this, MyVehicle.class);
+                intent.putExtra("idVehicle", idVehicle);
+                intent.putExtra("modelo", model);
+                intent.putExtra("marca", brand);
+                intent.putExtra("categoria", category);
+                intent.putExtra("cor", color);
+                intent.putExtra("id", idCliente);
                 startActivity(intent);
                 finish();
             }
         });
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        btnAlterVehicles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                montaObj();
+
             }
         });
 
@@ -78,7 +67,7 @@ public class RegisterVehicles extends AppCompatActivity {
                 switch(adapterView.getItemAtPosition(i).toString()){
                     case "MARCA":
                         spinnerBrand.requestFocus();
-                        Toast.makeText(RegisterVehicles.this, "Selecione uma marca!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditVehicles.this, "Selecione uma marca!", Toast.LENGTH_SHORT).show();
                         break;
                     case "HONDA":
                         brandId = "1";
@@ -227,7 +216,7 @@ public class RegisterVehicles extends AppCompatActivity {
                 switch (adapterView.getItemAtPosition(i).toString()) {
                     case "CATEGORIA":
                         spinnerCategory.requestFocus();
-                        Toast.makeText(RegisterVehicles.this, "Selecione uma categoria!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditVehicles.this, "Selecione uma categoria!", Toast.LENGTH_SHORT).show();
                         break;
                     case "RACING":
                         categoryId = "1";
@@ -271,52 +260,19 @@ public class RegisterVehicles extends AppCompatActivity {
         });
     }
 
-    private void montaObj() {
-        String model = edtModel.getText().toString();
-        String color = edtColor.getText().toString();
-        String brand = brandId;
-        String category = categoryId;
-        vehicle.setClienteId(id);
-        vehicle.setModelo(model);
-        vehicle.setCor(color);
-        vehicle.setMarca(brand);
-        vehicle.setCategoria(category);
-        registerVehicle(vehicle);
-    }
-
-    private void registerVehicle(Vehicle vehicle) {
-        String url = HOST + "register_vehicle.php";
-
-        params.put("id", vehicle.getClienteId());
-        params.put("model", vehicle.getModelo());
-        params.put("brand", vehicle.getMarca());
-        params.put("color", vehicle.getCor());
-        params.put("category", vehicle.getCategoria());
-
-        cliente.post(url, params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                if(statusCode == 200){
-                    Intent intent = new Intent(RegisterVehicles.this, Home.class);
-                    intent.putExtra("id", id);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-            }
-        });
-    }
-
     private void getIds() {
+        idVehicle = getIntent().getStringExtra("idVehicle");
+        idCliente = getIntent().getStringExtra("id");
+        model = getIntent().getStringExtra("modelo");
+        brand = getIntent().getStringExtra("marca");
+        category = getIntent().getStringExtra("categoria");
+        color = getIntent().getStringExtra("cor");
+
         imgBack = findViewById(R.id.img_back);
         edtModel = findViewById(R.id.edt_model);
         edtColor = findViewById(R.id.edt_color);
         spinnerBrand = findViewById(R.id.spinner_brand);
         spinnerCategory = findViewById(R.id.spinner_category);
-        btnRegister = findViewById(R.id.btn_register_vehicle);
+        btnAlterVehicles = findViewById(R.id.btn_alter_vehicle);
     }
 }

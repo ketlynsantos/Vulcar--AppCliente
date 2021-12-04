@@ -73,7 +73,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_new_complemento_layout"
             style="@style/EditTextInputLayout"
-            android:layout_width="280dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/edt_new_endereco_layout"
             android:layout_marginBottom="15dp"
@@ -226,7 +226,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/edt_new_cidade_layout"
-            android:hint="Endereço"
+            android:hint="CEP"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -241,7 +241,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
                 android:importantForAutofill="no"
-                android:inputType="text"
+                android:inputType="number"
                 android:padding="10dp"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
