@@ -29,7 +29,7 @@
             android:text="Editar Endereço"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="24dp" />
+            android:textSize="20dp" />
 
     </RelativeLayout>
 
@@ -39,130 +39,225 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/relative_layout_1"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="55dp"
         android:layout_marginRight="15dp">
 
-        <EditText
-            android:id="@+id/edt_new_endereco"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_new_endereco_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_view_2"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
+            android:layout_marginBottom="15dp"
             android:hint="Endereço"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_new_complemento"
-            android:layout_width="250dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_new_endereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_new_complemento_layout"
+            style="@style/EditTextInputLayout"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edt_new_endereco"
-            android:layout_marginTop="18dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
+            android:layout_below="@id/edt_new_endereco_layout"
+            android:layout_marginBottom="15dp"
             android:hint="Complemento"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_new_num"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edt_new_endereco"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="18dp"
-            android:layout_toRightOf="@+id/edt_new_complemento"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:hint="Nº"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_new_complemento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
 
-        <EditText
-            android:id="@+id/edt_new_bairro"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_new_num_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_new_complemento"
-            android:layout_marginTop="18dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
+            android:layout_below="@id/edt_new_endereco_layout"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toRightOf="@id/edt_new_complemento_layout"
+            android:hint="N°"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_new_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_new_bairro_layout"
+            style="@style/EditTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_new_complemento_layout"
+            android:layout_marginBottom="15dp"
             android:hint="Bairro"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_new_cidade"
-            android:layout_width="250dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_new_bairro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_new_cidade_layout"
+            style="@style/EditTextInputLayout"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_new_bairro"
-            android:layout_marginTop="18dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
+            android:layout_below="@id/edt_new_bairro_layout"
+            android:layout_marginBottom="15dp"
             android:hint="Cidade"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_new_uf"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edt_new_bairro"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="18dp"
-            android:layout_toRightOf="@+id/edt_new_cidade"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:hint="UF"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_new_cidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
 
-        <EditText
-            android:id="@+id/edt_new_cep"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_new_uf_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_new_cidade"
-            android:layout_marginTop="18dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
+            android:layout_below="@id/edt_new_bairro_layout"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toRightOf="@id/edt_new_cidade_layout"
+            android:hint="UF"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_new_uf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_new_cep_layout"
+            style="@style/EditTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_new_cidade_layout"
             android:hint="CEP"
-            android:padding="10dp"
-            android:paddingStart="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_new_cep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_edit_address"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/button_blue"
         android:backgroundTint="@color/clear_blue"
         android:elevation="2dp"
@@ -171,6 +266,6 @@
         android:text="Editar"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textSize="16dp" />
 
 </RelativeLayout>

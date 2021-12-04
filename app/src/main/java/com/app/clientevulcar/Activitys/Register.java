@@ -16,6 +16,7 @@ import com.app.clientevulcar.Model.Client;
 import com.app.clientevulcar.R;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.HttpDelete;
@@ -31,11 +32,11 @@ import cz.msebera.android.httpclient.Header;
 public class Register extends AppCompatActivity {
 
     public TextView txtLogin;
-    public EditText edtName;
-    public EditText edtEmail;
-    public EditText edtPhone;
-    public EditText edtPassword;
-    public EditText edtCpf;
+    public TextInputEditText edtName;
+    public TextInputEditText edtEmail;
+    public TextInputEditText edtPhone;
+    public TextInputEditText edtPassword;
+    public TextInputEditText edtCpf;
     public ImageButton btnRegister;
     public ImageView imgArrowBack;
 

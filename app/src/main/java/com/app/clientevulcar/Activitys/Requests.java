@@ -21,7 +21,8 @@ public class Requests extends AppCompatActivity {
     public TextView txtServices;
     public ImageView imgLogoBusiness;
     public AppCompatButton btnAddBag;
-    String id;
+    public String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -31,7 +31,13 @@
     <style name="spinner" parent="Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:textColor">@color/dark_blue</item>
         <item name="android:fontFamily">@font/regular</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:paddingStart">12dp</item>
+    </style>
+
+    <style name="EditTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#fff</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="android:textColorHint">@color/white</item>
     </style>
 </resources>

@@ -17,6 +17,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/background_menu"
         android:elevation="2dp"
+        android:padding="2dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
@@ -40,8 +41,8 @@
 
                 <ImageView
                     android:id="@+id/img_photo"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:background="@drawable/img_corners"
                     android:backgroundTint="@color/white" />
 
@@ -55,7 +56,7 @@
                     android:fontFamily="@font/semibold"
                     android:text=""
                     android:textColor="@color/white"
-                    android:textSize="24dp" />
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -88,7 +89,7 @@
                         android:fontFamily="@font/semibold"
                         android:text="Meus Dados"
                         android:textColor="@color/white"
-                        android:textSize="22dp" />
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/text_view_2"
@@ -101,7 +102,7 @@
                         android:fontFamily="@font/light"
                         android:text="Alterar meus dados da conta"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="16dp" />
 
                     <ImageView
                         android:layout_width="35dp"
@@ -145,7 +146,7 @@
                         android:fontFamily="@font/semibold"
                         android:text="Automóveis"
                         android:textColor="@color/white"
-                        android:textSize="22dp" />
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/text_view_5"
@@ -158,7 +159,7 @@
                         android:fontFamily="@font/light"
                         android:text="Meus automóveis"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="16dp" />
 
                     <ImageView
                         android:layout_width="35dp"
@@ -203,7 +204,7 @@
                         android:fontFamily="@font/semibold"
                         android:text="Sair"
                         android:textColor="@color/white"
-                        android:textSize="22dp" />
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/text_view_9"
@@ -216,7 +217,7 @@
                         android:fontFamily="@font/light"
                         android:text="Fazer logout"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/text_view_10"

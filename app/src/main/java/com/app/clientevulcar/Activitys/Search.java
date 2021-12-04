@@ -16,11 +16,14 @@ import android.view.MenuItem;
 import android.view.View;
 import com.app.clientevulcar.R;
 import com.app.clientevulcar.main.SectionsPagerAdapter;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class Search extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
-    String id;
+    public String id;
+    public TextInputEditText edtSearch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,5 +72,6 @@ public class Search extends AppCompatActivity {
 
     private void getIds() {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        edtSearch = findViewById(R.id.edt_search);
     }
 }

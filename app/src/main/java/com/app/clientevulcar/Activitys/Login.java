@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.app.clientevulcar.Model.Client;
 import com.app.clientevulcar.R;
+import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -25,13 +26,14 @@ public class Login extends AppCompatActivity {
 
     public TextView txtRegister;
     public TextView txtForgetPassword;
-    public EditText edtEmail;
-    public EditText edtPassword;
+    public TextInputEditText edtEmail;
+    public TextInputEditText edtPassword;
     public AppCompatButton btnLogin;
 
     //Connection MySQL
-    //String HOST = "http://192.168.15.108/vulcar_database/Client/";
-    String HOST = "http://172.20.10.5/vulcar_database/Client/";
+    //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
+    //String HOST = "http://172.20.10.6/Vulcar--Syncmysql/Client/";
+    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -46,7 +48,6 @@ public class Login extends AppCompatActivity {
         getIds();
         cliente = new AsyncHttpClient();
 
-
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +58,8 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cliente.setTimeout(2000);
+                cliente.setMaxRetriesAndTimeout(1, 5000);
                 montaObj();
             }
         });
@@ -76,7 +79,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void funcLogin(Client client) {
-        String url = HOST+"login.php";
+        String url = HOST + "login.php";
 
         params.put("email", client.getEmail());
         params.put("pass", client.getPassword());

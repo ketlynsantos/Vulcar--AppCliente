@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.SearchStore"
-    android:background="@color/dark_blue">
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginEnd="15dp"
+    android:background="@color/dark_blue"
+    tools:context=".Fragments.SearchStore">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:textColor="@color/white"
+    <ListView
+        android:id="@+id/lv_result_services"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_blank_store" />
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

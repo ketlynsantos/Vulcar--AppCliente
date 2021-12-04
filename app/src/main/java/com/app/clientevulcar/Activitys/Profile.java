@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.clientevulcar.Model.Client;
@@ -25,15 +27,21 @@ import cz.msebera.android.httpclient.Header;
 public class Profile extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
-    TextView txtProfile;
-    String id;
+    public TextView txtProfile;
+    public String id;
+    public RelativeLayout rlData;
+    public RelativeLayout rlCars;
+    public RelativeLayout rlLogout;
 
     //Connection MySQL
-    //String HOST = "http://192.168.15.108/vulcar_database/Client/";
-    String HOST = "http://172.20.10.5/vulcar_database/Client/";
+    //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
+    //String HOST = "http://172.20.10.5/vulcar_database/Client/";
+    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
+
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
     Client client = new Client();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,15 +79,38 @@ public class Profile extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                 }
-
                 return false;
             }
+        });
 
+        rlData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itD = new Intent(Profile.this, MyData.class);
+                startActivity(itD);
+            }
+        });
+
+//        rlCars.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent itC = new Intent(Profile.this, MyCars.class);
+//                startActivity(itC);
+//            }
+//        });
+
+        rlLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itL = new Intent(Profile.this, Login.class);
+                startActivity(itL);
+                finish();
+            }
         });
     }
 
     private void montaObj() {
-        String url = HOST+"Select/select_profile.php";
+        String url = HOST + "Select/select_profile.php";
         client.setId(id);
         params.put("id", client.getId());
 
@@ -102,9 +133,12 @@ public class Profile extends AppCompatActivity {
         });
     }
 
-    private void getIds(){
+    private void getIds() {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         txtProfile = findViewById(R.id.txt_name_profile);
         id = getIntent().getStringExtra("id");
+        rlData = findViewById(R.id.rl_edit_data);
+        rlCars = findViewById(R.id.rl_cars);
+        rlLogout = findViewById(R.id.rl_logout);
     }
 }

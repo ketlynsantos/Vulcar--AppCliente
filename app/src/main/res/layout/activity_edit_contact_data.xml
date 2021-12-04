@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".Activitys.RegisterVehicles">
+    tools:context=".Activitys.EditContactData">
 
     <RelativeLayout
         android:id="@+id/relative_layout_1"
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/semibold"
-            android:text="Adicionar Automóvel"
+            android:text="Informações de contato"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20dp" />
@@ -34,21 +34,19 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/relative_layout_2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/relative_layout_1"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginRight="15dp">
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="15dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edt_model_layout"
+            android:id="@+id/edt_email_layout"
             style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:hint="Modelo"
+            android:hint="E-mail"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -60,11 +58,10 @@
             app:hintTextColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_model"
+                android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
-                android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:textColor="@color/white"
@@ -72,55 +69,30 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/spinner_brand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edt_model_layout"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/textbox"
-            android:entries="@array/brand"
-            android:fontFamily="@font/regular"
-            android:padding="10dp"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:theme="@style/spinner" />
-
-        <Spinner
-            android:id="@+id/spinner_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinner_brand"
-            android:background="@drawable/textbox"
-            android:entries="@array/category"
-            android:padding="10dp"
-            android:textSize="16dp"
-            android:layout_marginBottom="15dp"
-            android:textColor="@color/white"
-            android:theme="@style/spinner" />
-
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edt_color_layout"
+            android:id="@+id/edt_phone_layout"
             style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/spinner_category"
-            android:hint="Cor"
+            android:layout_below="@id/edt_email_layout"
+            android:layout_marginTop="20dp"
+            android:hint="Celular"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
             app:boxStrokeColor="@color/white"
+            app:endIconMode="clear_text"
+            app:endIconTint="#ABFFFFFF"
             app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:hintTextColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_color"
+                android:id="@+id/edt_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
-                android:importantForAutofill="no"
-                android:inputType="textEmailAddress"
+                android:inputType="number"
                 android:padding="10dp"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
@@ -130,18 +102,18 @@
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_register_vehicle"
+        android:id="@+id/btn_edit_contact"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_blue"
         android:backgroundTint="@color/clear_blue"
         android:elevation="2dp"
         android:fontFamily="@font/bold"
-        android:text="Cadastrar"
+        android:text="Atualizar"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16dp" />

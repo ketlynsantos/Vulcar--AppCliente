@@ -17,8 +17,10 @@
 
     <RelativeLayout
         android:id="@+id/relative_layout_1"
-        android:layout_width="350dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_centerInParent="true">
 
         <ImageView
@@ -38,7 +40,7 @@
             android:text="Bem vindo"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="45dp" />
+            android:textSize="40dp" />
 
         <TextView
             android:id="@+id/text_view_2"
@@ -51,91 +53,160 @@
             android:textColor="@color/clear_blue"
             android:textSize="18dp" />
 
-        <EditText
-            android:id="@+id/edt_name"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_name_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_2"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
             android:hint="Nome"
-            android:inputType="text"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_cpf"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:inputType="text"
+                android:padding="10dp"
+                android:importantForAutofill="no"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_cpf_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_name"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
+            android:layout_below="@id/edt_name_layout"
+            android:layout_marginBottom="15dp"
             android:hint="CPF"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp"/>
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_email"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_cpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:inputType="number"
+                android:padding="10dp"
+                android:importantForAutofill="no"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_email_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_cpf"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
+            android:layout_below="@id/edt_cpf_layout"
+            android:layout_marginBottom="15dp"
             android:hint="E-mail"
-            android:padding="10dp"
-            android:inputType="textEmailAddress"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_phone"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:importantForAutofill="no"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_phone_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_email"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:hint="Telefone"
-            android:inputType="phone"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            android:layout_below="@id/edt_email_layout"
+            android:layout_marginBottom="15dp"
+            android:hint="Celular"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_password"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:inputType="number"
+                android:padding="10dp"
+                android:importantForAutofill="no"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_password_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_phone"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
+            android:layout_below="@id/edt_phone_layout"
+            android:layout_marginBottom="15dp"
             android:hint="Senha"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:endIconMode="password_toggle"
+            app:endIconTint="#ABFFFFFF"
+            app:endIconCheckable="false"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:importantForAutofill="no"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
             android:id="@+id/btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_password"
-            android:layout_marginTop="15dp"
+            android:layout_below="@id/edt_password_layout"
             android:background="@drawable/button_blue"
             android:src="@drawable/ic__arrow_back"
             android:fontFamily="@font/bold"
@@ -165,7 +236,7 @@
             android:fontFamily="@font/regular"
             android:text="Já possui uma conta?"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/txt_login"
@@ -175,7 +246,7 @@
             android:fontFamily="@font/bold"
             android:text="Clique aqui"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
 
     </LinearLayout>
 

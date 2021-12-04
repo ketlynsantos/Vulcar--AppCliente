@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClienteVulcar">
-        <activity android:name=".Activitys.RegisterVehicles"></activity>
+        <activity android:name=".Activitys.MyVehicle"></activity>
+        <activity android:name=".Activitys.EditVehicles" />
+        <activity android:name=".Activitys.EditPassword" />
+        <activity android:name=".Activitys.EditContactData" />
+        <activity android:name=".Activitys.EditPersonData" />
+        <activity android:name=".Activitys.MyData" />
+        <activity android:name=".Activitys.RegisterVehicles" />
         <activity
             android:name=".Activitys.Search"
             android:label="@string/title_activity_search"

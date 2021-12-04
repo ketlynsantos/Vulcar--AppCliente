@@ -17,7 +17,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/background_menu"
         android:elevation="2dp"
-        android:padding="5dp"
+        android:padding="2dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
@@ -39,12 +39,12 @@
             android:text="Meus Pedidos"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="24dp" />
+            android:textSize="20dp" />
 
         <RelativeLayout
             android:id="@id/relative_layout_2"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="140dp"
             android:layout_below="@id/text_view_1"
             android:layout_marginTop="35dp"
             android:background="@drawable/button_blue"
@@ -58,7 +58,7 @@
                 android:fontFamily="@font/semibold"
                 android:text="Peça de novo"
                 android:textColor="@color/dark_blue"
-                android:textSize="24dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/text_view_3"
@@ -70,7 +70,7 @@
                 android:padding="5dp"
                 android:text="1"
                 android:textColor="@color/dark_blue"
-                android:textSize="18dp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/txt_services"
@@ -83,7 +83,7 @@
                 android:padding="5dp"
                 android:text="Lavagem Interna"
                 android:textColor="@color/dark_blue"
-                android:textSize="18dp" />
+                android:textSize="16dp" />
 
             <ImageView
                 android:id="@+id/img_logo"
@@ -96,14 +96,14 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_add_bag"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/button_blue"
                 android:fontFamily="@font/semibold"
                 android:text="Adiconar à sacola"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="18dp" />
+                android:textSize="16dp" />
 
         </RelativeLayout>
 
@@ -120,8 +120,16 @@
                 android:layout_height="wrap_content"
                 android:text="Histórico"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:fontFamily="@font/semibold"/>
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lv_historic_requests"
+                android:layout_below="@id/text_view_4"
+                android:scrollbars="none"
+                android:layout_marginTop="15dp"/>
 
         </RelativeLayout>
 

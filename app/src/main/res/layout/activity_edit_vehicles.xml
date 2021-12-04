@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".Activitys.RegisterVehicles">
+    tools:context=".Activitys.EditVehicles">
 
     <RelativeLayout
         android:id="@+id/relative_layout_1"
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/semibold"
-            android:text="Adicionar Automóvel"
+            android:text="Automóvel"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20dp" />
@@ -91,12 +91,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/spinner_brand"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/textbox"
             android:entries="@array/category"
             android:padding="10dp"
-            android:textSize="16dp"
-            android:layout_marginBottom="15dp"
             android:textColor="@color/white"
+            android:textSize="16dp"
             android:theme="@style/spinner" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -111,6 +111,8 @@
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
             app:boxStrokeColor="@color/white"
+            app:endIconMode="clear_text"
+            app:endIconTint="#ABFFFFFF"
             app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:hintTextColor="@color/white">
 
@@ -130,7 +132,7 @@
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_register_vehicle"
+        android:id="@+id/btn_alter_vehicle"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
@@ -141,7 +143,7 @@
         android:backgroundTint="@color/clear_blue"
         android:elevation="2dp"
         android:fontFamily="@font/bold"
-        android:text="Cadastrar"
+        android:text="Atualizar"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16dp" />
