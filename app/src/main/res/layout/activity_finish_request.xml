@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_blue"
+    tools:context=".Activitys.FinishRequest">
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
+        android:elevation="2dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic__arrow_back"
+            android:backgroundTint="@color/clear_blue" />
+
+        <TextView
+            android:id="@+id/txt_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/semibold"
+            android:text="Finalizar Pedido"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_finish_request"
+        android:layout_below="@id/relative_layout_1"
+        android:layout_marginBottom="15dp"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp">
+
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:background="@drawable/img_corners"
+                    android:backgroundTint="@color/white" />
+
+                <TextView
+                    android:id="@+id/txt_name_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/img_logo"
+                    android:fontFamily="@font/semibold"
+                    android:text="Lava bem SR. Esponja"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@id/relative_layout_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_layout_2"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    android:id="@+id/txt_name_services"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/semibold"
+                    android:text="Lavagem Interna e Externa"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/txt_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_name_services"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/regular"
+                    android:text="R$ 84,00"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/text_view_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/txt_price"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:alpha="0.1"
+                    android:background="@color/white"
+                    android:elevation="1dp" />
+
+                <RelativeLayout
+                    android:id="@id/relative_layout_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view_3">
+
+                    <ImageView
+                        android:id="@+id/img_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/stroke_border_color_10dp"
+                        android:padding="15dp"
+                        android:src="@drawable/ic_location" />
+
+                    <TextView
+                        android:id="@+id/text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_toRightOf="@id/img_location"
+                        android:fontFamily="@font/light"
+                        android:text="Endereço de realização do serviço:"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/txt_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text2"
+                        android:layout_marginStart="15dp"
+                        android:layout_toRightOf="@id/img_location"
+                        android:fontFamily="@font/regular"
+                        android:text="Rua Altonio Arnaldo, 43"
+                        android:textColor="@color/white"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/txt_neigh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_address"
+                        android:layout_marginStart="15dp"
+                        android:layout_toRightOf="@id/img_location"
+                        android:fontFamily="@font/light"
+                        android:text="Engenho Novo"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/text_view_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/relative_layout_4"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:alpha="0.1"
+                    android:background="@color/white"
+                    android:elevation="1dp" />
+
+                <TextView
+                    android:id="@+id/text_view_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view_4"
+                    android:fontFamily="@font/bold"
+                    android:text="Total a pagar"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/txt_price_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view_4"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/bold"
+                    android:text="R$ 84,00"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/text_view_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/txt_price_total"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:alpha="0.1"
+                    android:background="@color/white"
+                    android:elevation="1dp" />
+
+                <TextView
+                    android:id="@+id/text_view_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view_5"
+                    android:fontFamily="@font/semibold"
+                    android:text="Forma de pagamento"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view_6"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/stroke_border_color_10dp"
+                        android:drawableStart="@drawable/ic_money"
+                        android:drawablePadding="15dp"
+                        android:fontFamily="@font/light"
+                        android:padding="15dp"
+                        android:text="Dinheiro"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                    <RelativeLayout
+                        android:id="@+id/relative_layout_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true">
+
+                            <TextView
+                                android:id="@+id/text_view_7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:fontFamily="@font/semibold"
+                                android:text="Troco?"
+                                android:textColor="@color/white"
+                                android:textSize="16dp" />
+
+                            <RadioGroup
+                                android:id="@+id/rg_thing"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_toRightOf="@id/text_view_7"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/rb_thing_no"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="15dp"
+                                    android:fontFamily="@font/regular"
+                                    android:text="Não"
+                                    android:textColor="@color/white"
+                                    android:textSize="14dp" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_thing_yes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/regular"
+                                    android:text="Sim"
+                                    android:textColor="@color/white"
+                                    android:textSize="14dp" />
+
+                            </RadioGroup>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edt_thing_layout"
+                        style="@style/EditTextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/relative_layout_5"
+                        android:hint="Troco"
+                        android:visibility="gone"
+                        app:boxCornerRadiusBottomEnd="5dp"
+                        app:boxCornerRadiusBottomStart="5dp"
+                        app:boxCornerRadiusTopEnd="5dp"
+                        app:boxCornerRadiusTopStart="5dp"
+                        app:boxStrokeColor="@color/white"
+                        app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                        app:hintTextColor="@color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_thing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/regular"
+                            android:importantForAutofill="no"
+                            android:inputType="text"
+                            android:padding="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_credit_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linear_layout_1"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/stroke_border_color_10dp"
+                    android:drawableStart="@drawable/ic_card"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/light"
+                    android:padding="15dp"
+                    android:text="Cartão de Crédito"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_debit_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_credit_card"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/stroke_border_color_10dp"
+                    android:drawableStart="@drawable/ic_card"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="#FFFFFFFF"
+                    android:fontFamily="@font/light"
+                    android:padding="15dp"
+                    android:text="Cartão de Débito"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_finish_request"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_blue"
+        android:backgroundTint="@color/clear_blue"
+        android:elevation="2dp"
+        android:fontFamily="@font/bold"
+        android:text="Finalizar Pedido"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+
+</RelativeLayout>
