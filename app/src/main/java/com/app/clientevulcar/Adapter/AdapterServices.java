@@ -10,18 +10,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.app.clientevulcar.Model.Business;
+import com.app.clientevulcar.Model.Services;
 import com.app.clientevulcar.Model.Vehicle;
 import com.app.clientevulcar.R;
 
 import java.util.ArrayList;
 
-public class AdapterVehicles extends ArrayAdapter<Vehicle> {
+public class AdapterServices extends ArrayAdapter<Services> {
+
     int groupid;
-    ArrayList<Vehicle> lista;
+    ArrayList<Services> lista;
     Context context;
 
-    public AdapterVehicles(@NonNull Context context, int vg, int id, ArrayList<Vehicle> lista) {
+    public AdapterServices(@NonNull Context context, int vg, int id, ArrayList<Services> lista) {
         super(context, vg, id, lista);
         this.context = context;
         this.groupid = vg;
@@ -34,19 +35,18 @@ public class AdapterVehicles extends ArrayAdapter<Vehicle> {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(groupid, parent, false);
 
-        TextView txtId = itemView.findViewById(R.id.txt_id);
-        TextView txtModelo = itemView.findViewById(R.id.txt_modelo);
-        TextView txtMarca = itemView.findViewById(R.id.txt_marca);
-        TextView txtCor = itemView.findViewById(R.id.txt_cor);
-        TextView txtCategoria = itemView.findViewById(R.id.txt_categoria);
+        TextView txtId = itemView.findViewById(R.id.txt_id_services);
+        TextView txtName = itemView.findViewById(R.id.txt_name_business);
+        TextView txtCategory = itemView.findViewById(R.id.txt_category_services);
+        TextView txtDesc = itemView.findViewById(R.id.txt_desc_services);
+        TextView txtPrice = itemView.findViewById(R.id.txt_price_services);
 
         txtId.setText(lista.get(position).getId());
-        txtModelo.setText(lista.get(position).getModelo());
-        txtMarca.setText(lista.get(position).getMarca());
-        txtCor.setText(lista.get(position).getCor());
-        txtCategoria.setText(lista.get(position).getCategoria());
+        txtName.setText(lista.get(position).getNome());
+        txtCategory.setText(lista.get(position).getCategoria());
+        txtDesc.setText(lista.get(position).getDesc());
+        txtPrice.setText(lista.get(position).getValor().toString());
 
-        //itemView.setRotation(90);
         return itemView;
     }
 }

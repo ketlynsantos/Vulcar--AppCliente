@@ -48,11 +48,9 @@ public class RegisterVehicles extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_vehicles);
 
-        id = getIntent().getStringExtra("id");
-        cliente = new AsyncHttpClient();
-
         getSupportActionBar().hide();
         getIds();
+        cliente = new AsyncHttpClient();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -276,6 +274,7 @@ public class RegisterVehicles extends AppCompatActivity {
         String color = edtColor.getText().toString();
         String brand = brandId;
         String category = categoryId;
+
         vehicle.setClienteId(id);
         vehicle.setModelo(model);
         vehicle.setCor(color);
@@ -303,7 +302,6 @@ public class RegisterVehicles extends AppCompatActivity {
                     finish();
                 }
             }
-
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
@@ -312,6 +310,8 @@ public class RegisterVehicles extends AppCompatActivity {
     }
 
     private void getIds() {
+        id = getIntent().getStringExtra("id");
+
         imgBack = findViewById(R.id.img_back);
         edtModel = findViewById(R.id.edt_model);
         edtColor = findViewById(R.id.edt_color);

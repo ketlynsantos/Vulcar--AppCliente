@@ -24,6 +24,7 @@ public class EditVehicles extends AppCompatActivity {
     public Spinner spinnerCategory;
     public Spinner spinnerBrand;
     public AppCompatButton btnAlterVehicles;
+
     public String idVehicle, idCliente;
     public String model;
     public String brand, brandId;

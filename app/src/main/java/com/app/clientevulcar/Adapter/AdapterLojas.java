@@ -1,11 +1,13 @@
 package com.app.clientevulcar.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,9 +39,19 @@ public class AdapterLojas extends ArrayAdapter<Business> {
         ImageView imgBus = itemView.findViewById(R.id.img_bus);
         TextView txtName = itemView.findViewById(R.id.txt_name);
         TextView txtId = itemView.findViewById(R.id.txt_id);
+
        // imgBus.setImageResource(lista.get(position).getImg());
         txtName.setText(lista.get(position).getNome());
         txtId.setText(lista.get(position).getId());
+
+//        relativeLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+
         return itemView;
     }
+
 }

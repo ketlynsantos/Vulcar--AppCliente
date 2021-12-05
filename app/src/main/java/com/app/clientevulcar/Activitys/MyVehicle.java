@@ -20,6 +20,7 @@ public class MyVehicle extends AppCompatActivity {
     public TextView txtBrand;
     public TextView txtCategory;
     public TextView txtColor;
+
     public String idVehicle, idCliente;
     public String model;
     public String brand;

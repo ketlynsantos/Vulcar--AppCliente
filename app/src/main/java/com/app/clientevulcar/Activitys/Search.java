@@ -21,8 +21,8 @@ import com.google.android.material.textfield.TextInputEditText;
 public class Search extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
-    public String id;
     public TextInputEditText edtSearch;
+    public String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,6 @@ public class Search extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
 
         getIds();
-        id = getIntent().getStringExtra("id");
         bottomNavigationView.setSelectedItemId(R.id.search);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -71,6 +70,8 @@ public class Search extends AppCompatActivity {
     }
 
     private void getIds() {
+        id = getIntent().getStringExtra("id");
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         edtSearch = findViewById(R.id.edt_search);
     }
