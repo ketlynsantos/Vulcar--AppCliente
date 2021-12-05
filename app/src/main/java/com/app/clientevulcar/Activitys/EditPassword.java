@@ -27,7 +27,7 @@ public class EditPassword extends AppCompatActivity {
     public TextInputEditText edtPassword;
     public TextInputEditText edtNewPassword;
     public AppCompatButton btnAlter;
-    public String id = "5";
+    public String id;
 
     //Connection MySQL
     //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
@@ -51,6 +51,7 @@ public class EditPassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent itI = new Intent(EditPassword.this, MyData.class);
+                itI.putExtra("id", id);
                 startActivity(itI);
                 finish();
             }
@@ -88,16 +89,17 @@ public class EditPassword extends AppCompatActivity {
                     try {
                         JSONObject result = new JSONObject(new String(responseBody));
                         if(result.getString("UPDATE").equals("true")) {
-                            Toast.makeText(EditPassword.this, "Sucess!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditPassword.this, "Senha alterada com Sucesso!", Toast.LENGTH_SHORT).show();
                             Intent it = new Intent(EditPassword.this, MyData.class);
+                            it.putExtra("id", id);
                             startActivity(it);
                             finish();
                         } else {
-                            Toast.makeText(EditPassword.this, "Error!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditPassword.this, "Senha atual incorreta!", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        Toast.makeText(EditPassword.this, "Error!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditPassword.this, "Erro ao alterar a senha!", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -110,7 +112,8 @@ public class EditPassword extends AppCompatActivity {
     }
 
     private void getIds() {
-        //id = getIntent().getStringExtra("id");
+        id = getIntent().getStringExtra("id");
+
         imgBack = findViewById(R.id.img_back);
         edtPassword = findViewById(R.id.edt_password);
         edtNewPassword = findViewById(R.id.edt_new_password);

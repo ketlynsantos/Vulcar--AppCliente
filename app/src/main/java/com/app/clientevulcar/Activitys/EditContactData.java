@@ -19,6 +19,7 @@ public class EditContactData extends AppCompatActivity {
     public TextInputEditText edtEmail;
     public TextInputEditText edtPhone;
     public AppCompatButton btnEdit;
+    public String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class EditContactData extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent itI = new Intent(EditContactData.this, MyData.class);
+                itI.putExtra("id", id);
+                startActivity(itI);
                 startActivity(itI);
                 finish();
             }
@@ -48,6 +51,7 @@ public class EditContactData extends AppCompatActivity {
                 Intent intent = new Intent(EditContactData.this, MyData.class);
 
                 if(checkValidations == true){
+                    intent.putExtra("id", id);
                 }
             }
         });
@@ -55,6 +59,8 @@ public class EditContactData extends AppCompatActivity {
     }
 
     private void getIds() {
+        id = getIntent().getStringExtra("id");
+
         imgBack = findViewById(R.id.img_back);
         edtEmail = findViewById(R.id.edt_email);
         edtPhone = findViewById(R.id.edt_phone);

@@ -50,7 +50,6 @@ public class EditAddress extends AppCompatActivity {
         getSupportActionBar().hide();
         getIds();
         cliente = new AsyncHttpClient();
-        id = getIntent().getStringExtra("id");
         maskFormat();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +125,8 @@ public class EditAddress extends AppCompatActivity {
     }
 
     private void getIds() {
+        id = getIntent().getStringExtra("id");
+
         imgBack = findViewById(R.id.img_back);
         edtNewAddress = findViewById(R.id.edt_new_endereco);
         edtNewNumber = findViewById(R.id.edt_new_num);

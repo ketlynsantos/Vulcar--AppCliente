@@ -11,9 +11,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -74,6 +77,8 @@ public class Home extends AppCompatActivity {
         montaObj();
         carregarLojas();
         carregarVehicles();
+
+        lvBusiness.setScrollContainer(false);
 
         //lvVehicle.setRotation(-90);
         Intent intent_address = new Intent(Home.this, MyAddress.class);
@@ -144,8 +149,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if(statusCode == 200){
-                    //listarVehicles(new String(responseBody));
-                    listarTeste(new String(responseBody));
+                    listarVehicles(new String(responseBody));
                 }
             }
 
@@ -156,7 +160,7 @@ public class Home extends AppCompatActivity {
         });
     }
 
-    private void listarTeste(String resposta) {
+    private void listarVehicles(String resposta) {
         final ArrayList<Vehicle> lista = new ArrayList<>();
 
         try {
@@ -178,6 +182,7 @@ public class Home extends AppCompatActivity {
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(linearLayoutManager);
+
             RecyclerAdapterVehicles adapter = new RecyclerAdapterVehicles(this, lista);
             recyclerView.setAdapter(adapter);
 
@@ -248,8 +253,24 @@ public class Home extends AppCompatActivity {
 
             }
 
+            int totalHeigt = lista.size() * 140;
+
             AdapterLojas adapter = new AdapterLojas(context, R.layout.adapter_lojas, R.id.txt_id, lista);
             lvBusiness.setAdapter(adapter);
+            lvBusiness.getLayoutParams().height = totalHeigt;
+
+            lvBusiness.setClickable(true);
+            lvBusiness.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long i) {
+                    Intent it = new Intent(Home.this, com.app.clientevulcar.Activitys.Business.class);
+                    it.putExtra("idBusiness", lista.get(position).getId());
+                    it.putExtra("id", id);
+                    startActivity(it);
+                }
+            });
+
 
         } catch(Exception erro) {
             Log.d("erro", "erro"+erro);
@@ -258,6 +279,7 @@ public class Home extends AppCompatActivity {
 
     private void montaObj() {
         String url = HOST + "Select/select_profile.php";
+
         client.setId(id);
         params.put("id", client.getId());
 
@@ -269,7 +291,7 @@ public class Home extends AppCompatActivity {
                     String address = jsonarray.getString("CLIENTE_ENDERECO");
                     String num = jsonarray.getString("CLIENTE_NUM");
 
-                    txtAddress.setText(address+", "+num);
+                    txtAddress.setText(address + ", " + num);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -283,18 +305,18 @@ public class Home extends AppCompatActivity {
     }
 
     private void getIds() {
+        id = getIntent().getStringExtra("id");
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         imgGoToAddress = findViewById(R.id.img_go_address);
         txtAddress = findViewById(R.id.txt_address);
         llGoAddress = findViewById(R.id.ll_go_address);
-        id = getIntent().getStringExtra("id");
         lvBusiness = findViewById(R.id.lv_business);
-        //lvVehicle = findViewById(R.id.lv_vehicles);
         btnRegisterCar = findViewById(R.id.btn_register_car);
         recyclerView = findViewById(R.id.recycler);
     }
 
-    private void getModels(){
+    private void getModels() {
         client = new Client();
         vehicle = new Vehicle();
     }

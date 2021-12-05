@@ -29,8 +29,7 @@ public class MyAddress extends AppCompatActivity {
     public TextView txtCity;
     public TextView txtUF;
     public TextView txtCep;
-
-    String id;
+    public String id;
 
     //Connection MySQL
     //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
@@ -74,7 +73,8 @@ public class MyAddress extends AppCompatActivity {
     }
 
     private void montaObj() {
-        String url = HOST+"Select/select_profile.php";
+        String url = HOST + "Select/select_profile.php";
+
         client.setId(id);
         params.put("id", client.getId());
 
@@ -109,6 +109,8 @@ public class MyAddress extends AppCompatActivity {
     }
 
     private void getIds() {
+        id = getIntent().getStringExtra("id");
+
         imgBack = findViewById(R.id.img_back);
         btnEdit = findViewById(R.id.btn_edit);
         txtAddress = findViewById(R.id.txt_address);
@@ -116,6 +118,5 @@ public class MyAddress extends AppCompatActivity {
         txtCity = findViewById(R.id.txt_city);
         txtUF = findViewById(R.id.txt_uf);
         txtCep = findViewById(R.id.txt_cep);
-        id = getIntent().getStringExtra("id");
     }
 }

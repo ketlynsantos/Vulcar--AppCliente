@@ -19,6 +19,7 @@ public class EditPersonData extends AppCompatActivity {
     public TextInputEditText edtName;
     public TextInputEditText edtCPF;
     public AppCompatButton btnEdit;
+    public String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class EditPersonData extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent itI = new Intent(EditPersonData.this, MyData.class);
+                itI.putExtra("id", id);
                 startActivity(itI);
                 finish();
             }
@@ -48,12 +50,15 @@ public class EditPersonData extends AppCompatActivity {
                 Intent intent = new Intent(EditPersonData.this, MyData.class);
 
                 if(checkValidations == true){
+                    intent.putExtra("id", id);
                 }
             }
         });
     }
 
     private void getIds() {
+        id = getIntent().getStringExtra("id");
+
         imgBack = findViewById(R.id.img_back);
         edtName = findViewById(R.id.edt_name);
         edtCPF = findViewById(R.id.edt_cpf);

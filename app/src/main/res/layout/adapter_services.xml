@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/dark_blue">
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_id_services"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/txt_name_services"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/regular"
+            android:text="Lavagem Interna"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_category_services"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_toRightOf="@id/txt_name_services"
+            android:fontFamily="@font/semibold"
+            android:text="(Sedan)"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_desc_services"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_name_services"
+            android:layout_marginTop="-2dp"
+            android:fontFamily="@font/light"
+            android:text="Limpeza interna do automóvel (bancos, carpete, painel) e ..."
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/text_view_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_desc_services"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/regular"
+            android:text="A partir de R$"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_price_services"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_desc_services"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/text_view_1"
+            android:fontFamily="@font/regular"
+            android:text="240,00"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_view_3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/relative_layout_1"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:alpha="0.1"
+        android:background="@color/white"
+        android:elevation="1dp" />
+
+
+</RelativeLayout>

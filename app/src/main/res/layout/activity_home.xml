@@ -23,133 +23,151 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_navigator" />
 
-    <RelativeLayout
-        android:id="@+id/relative_layout_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp">
-
-        <LinearLayout
-            android:id="@+id/ll_go_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/txt_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/regular"
-                android:text=""
-                android:textColor="@color/white"
-                android:textSize="18dp" />
-
-            <ImageView
-                android:id="@+id/img_go_address"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_arrow"
-                android:backgroundTint="@color/clear_blue" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/text_view_3"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="5dp"
-            android:layout_below="@id/ll_go_address"
-            android:alpha="0.1"
-            android:background="@color/white"
-            android:elevation="1dp" />
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/text_view_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Meus Automóveis"
-        android:layout_below="@id/relative_layout_2"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:fontFamily="@font/semibold"
-        android:layout_marginTop="15dp" />
-
-    <HorizontalScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/text_view_1"
-        android:id="@+id/horizonatal_scroll"
-        android:scrollbars="none"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
-        android:layout_marginEnd="15dp">
+        android:fillViewport="true"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/bottom_navigation">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recycler"
-                android:scrollbars="none"
-                android:orientation="horizontal"/>
+            android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/relative_layout_2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/stroke_border_color"
-                android:padding="2dp">
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp">
 
-                <ImageButton
-                    android:id="@+id/btn_register_car"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:background="@drawable/img_corners"
-                    android:backgroundTint="@color/clear_blue"
-                    android:src="@drawable/ic_add"
-                    android:fontFamily="@font/bold"
-                    android:padding="10dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"/>
+                <LinearLayout
+                    android:id="@+id/ll_go_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/regular"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                    <ImageView
+                        android:id="@+id/img_go_address"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_arrow"
+                        android:backgroundTint="@color/clear_blue" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_view_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/ll_go_address"
+                    android:alpha="0.1"
+                    android:background="@color/white"
+                    android:elevation="1dp" />
 
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/text_view_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meus Automóveis"
+                android:layout_below="@id/relative_layout_2"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/semibold"
+                android:layout_marginTop="15dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/text_view_1"
+                android:id="@+id/horizonatal_scroll"
+                android:scrollbars="none"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_marginEnd="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recycler"
+                        android:scrollbars="none"
+                        android:orientation="horizontal"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/stroke_border_color"
+                        android:padding="2dp">
+
+                        <ImageButton
+                            android:id="@+id/btn_register_car"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:background="@drawable/img_corners"
+                            android:backgroundTint="@color/clear_blue"
+                            android:src="@drawable/ic_add"
+                            android:fontFamily="@font/bold"
+                            android:padding="10dp"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/linha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Empresas"
+                android:layout_below="@id/horizonatal_scroll"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/semibold"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"/>
+
+            <ListView
+                android:id="@+id/lv_business"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/linha"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                android:nestedScrollingEnabled="false"
+                android:divider="@android:color/transparent"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"/>
+
         </LinearLayout>
 
-    </HorizontalScrollView>
-
-    <TextView
-        android:id="@+id/linha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Empresas"
-        android:layout_below="@id/horizonatal_scroll"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:fontFamily="@font/semibold"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"/>
-
-    <ListView
-        android:id="@+id/lv_business"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linha"
-        android:scrollbars="none"
-        android:divider="@android:color/transparent"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"/>
+    </ScrollView>
 
 </RelativeLayout>
