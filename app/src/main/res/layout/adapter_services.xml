@@ -13,10 +13,10 @@
         android:layout_marginEnd="15dp">
 
         <TextView
+            android:id="@+id/txt_id_services"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_id_services"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txt_name_services"
@@ -85,6 +85,5 @@
         android:alpha="0.1"
         android:background="@color/white"
         android:elevation="1dp" />
-
 
 </RelativeLayout>
