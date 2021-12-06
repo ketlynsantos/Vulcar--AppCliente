@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.app.clientevulcar.Model.Business;
+import com.app.clientevulcar.Model.Services;
 import com.app.clientevulcar.Model.Vehicle;
 import com.app.clientevulcar.R;
 
@@ -26,11 +27,11 @@ public class AdapterVehiclesCategory extends ArrayAdapter<Vehicle> {
     Context context;
     int checkedButtonPosition;
 
-    public AdapterVehiclesCategory(@NonNull Context context, int vg, ArrayList<Vehicle> lista) {
-        super(context, vg);
+    public AdapterVehiclesCategory(@NonNull Context context, int vg, int id, ArrayList<Vehicle> lista) {
+        super(context, vg, id, lista);
+        this.context = context;
         this.groupid = vg;
         this.lista = lista;
-        this.context = context;
     }
 
     @NonNull
@@ -39,7 +40,7 @@ public class AdapterVehiclesCategory extends ArrayAdapter<Vehicle> {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(groupid, parent, false);
 
-        ImageView imgBus = itemView.findViewById(R.id.img_bus);
+        //ImageView imgBus = itemView.findViewById(R.id.img_bus);
         TextView txtVehicles = itemView.findViewById(R.id.txt_modelo);
         TextView txtId = itemView.findViewById(R.id.txt_id);
 

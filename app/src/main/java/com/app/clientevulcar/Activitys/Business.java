@@ -124,7 +124,7 @@ public class Business extends AppCompatActivity {
                     it.putExtra("nome_serv", lista.get(position).getNome());
                     it.putExtra("nome_loja", txtNameBusiness.getText());
                     it.putExtra("desc_serv", lista.get(position).getDesc());
-                    it.putExtra("id_categoria", lista.get(position).getId_categoria());
+                    it.putExtra("id_cate", lista.get(position).getId_categoria());
                     it.putExtra("nome_cate", lista.get(position).getCategoria());
                     it.putExtra("valor", lista.get(position).getValor());
                     startActivity(it);

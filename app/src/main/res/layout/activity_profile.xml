@@ -43,8 +43,7 @@
                     android:id="@+id/img_photo"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:background="@drawable/img_corners"
-                    android:backgroundTint="@color/white" />
+                    android:background="@drawable/ico_profile"/>
 
                 <TextView
                     android:id="@+id/txt_name_profile"
