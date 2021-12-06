@@ -36,16 +36,18 @@ public class AdapterServices extends ArrayAdapter<Services> {
         View itemView = inflater.inflate(groupid, parent, false);
 
         TextView txtId = itemView.findViewById(R.id.txt_id_services);
-        TextView txtName = itemView.findViewById(R.id.txt_name_business);
+        TextView txtNameService = itemView.findViewById(R.id.txt_name_services);
+        TextView txtIdCategory = itemView.findViewById(R.id.txt_id_category);
         TextView txtCategory = itemView.findViewById(R.id.txt_category_services);
         TextView txtDesc = itemView.findViewById(R.id.txt_desc_services);
         TextView txtPrice = itemView.findViewById(R.id.txt_price_services);
 
         txtId.setText(lista.get(position).getId());
-        txtName.setText(lista.get(position).getNome());
+        txtNameService.setText(lista.get(position).getNome());
+        txtIdCategory.setText(lista.get(position).getId_categoria());
         txtCategory.setText(lista.get(position).getCategoria());
         txtDesc.setText(lista.get(position).getDesc());
-        txtPrice.setText(lista.get(position).getValor().toString());
+        txtPrice.setText(lista.get(position).getValor());
 
         return itemView;
     }

@@ -14,6 +14,7 @@ import com.app.clientevulcar.Model.Client;
 import com.app.clientevulcar.R;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -27,21 +28,21 @@ import org.json.JSONObject;
 import cz.msebera.android.httpclient.Header;
 
 public class Register2 extends AppCompatActivity {
-    public EditText edtEndereco;
-    public EditText edtNum;
-    public EditText edtComp;
-    public EditText edtBairro;
-    public EditText edtCidade;
-    public EditText edtUF;
-    public EditText edtCep;
+    public TextInputEditText edtEndereco;
+    public TextInputEditText edtNum;
+    public TextInputEditText edtComp;
+    public TextInputEditText edtBairro;
+    public TextInputEditText edtCidade;
+    public TextInputEditText edtUF;
+    public TextInputEditText edtCep;
     public AppCompatButton btnRegister;
     public ImageView imgBack;
 
     // HOST Database
     //Connection MySQL
     //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
-    //String HOST = "http://172.20.10.5/vulcar_database/Client/";
-    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
+    String HOST = "http://192.168.15.135/vulcar_database/Client/";
+    //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;

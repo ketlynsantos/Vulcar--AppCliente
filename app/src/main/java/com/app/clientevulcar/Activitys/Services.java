@@ -27,19 +27,20 @@ import java.util.ArrayList;
 public class Services extends AppCompatActivity {
 
     public ImageView imgBack;
-    public TextView txtNameServices;
+    public TextView txtNameServices, txtNameBusiness;
     public TextView txtCategory;
     public TextView txtDesc;
     public TextView txtPrice;
     public ListView lvVehicles;
 
-    public String idClient;
+    public String id, idBusiness, nomeServ, descServ, idCategoria, nomeCategoria, valor;
+
     public Activity context;
 
     //Connection MySQL
     //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
-    //String HOST = "http://172.20.10.6/Vulcar--Syncmysql/Client/";
-    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
+    String HOST = "http://192.168.15.135/vulcar_database/Client/";
+    //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -51,14 +52,23 @@ public class Services extends AppCompatActivity {
 
         getSupportActionBar().hide();
         getIds();
+        cliente = new AsyncHttpClient();
         context = Services.this;
+
+        txtNameBusiness.setText(getIntent().getStringExtra("nome_loja"));
+        txtNameServices.setText(getIntent().getStringExtra("nome_serv"));
+        txtDesc.setText(getIntent().getStringExtra("desc_serv"));
+        txtCategory.setText(getIntent().getStringExtra("nome_cate"));
+        txtPrice.setText(getIntent().getStringExtra("valor"));
+
         //carregarVehicles();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Services.this, Business.class);
-                it.putExtra("id", idClient);
+                it.putExtra("id", id);
+                it.putExtra("idBusiness", idBusiness);
                 startActivity(it);
                 finish();
             }
@@ -106,10 +116,12 @@ public class Services extends AppCompatActivity {
     }
 
     private void getIds() {
-        idClient = getIntent().getStringExtra("id");
+        id = getIntent().getStringExtra("id");
+        idBusiness = getIntent().getStringExtra("idBusiness");
 
         imgBack = findViewById(R.id.img_back);
         txtNameServices = findViewById(R.id.txt_name_services);
+        txtNameBusiness = findViewById(R.id.txt_name_business);
         txtCategory = findViewById(R.id.txt_category_services);
         txtDesc = findViewById(R.id.txt_desc_services);
         txtPrice = findViewById(R.id.txt_price_services);

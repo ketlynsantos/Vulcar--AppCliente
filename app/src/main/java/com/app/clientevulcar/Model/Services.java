@@ -1,8 +1,17 @@
 package com.app.clientevulcar.Model;
 
 public class Services {
-    private String id, nome, desc, categoria, loja;
-    private Double valor;
+    private String id, nome, desc, id_categoria, categoria, id_loja;
+
+    public String getId_categoria() {
+        return id_categoria;
+    }
+
+    public void setId_categoria(String id_categoria) {
+        this.id_categoria = id_categoria;
+    }
+
+    private String valor;
 
     public String getId() {
         return id;
@@ -36,19 +45,19 @@ public class Services {
         this.categoria = categoria;
     }
 
-    public String getLoja() {
-        return loja;
+    public String getId_loja() {
+        return id_loja;
     }
 
-    public void setLoja(String loja) {
-        this.loja = loja;
+    public void setId_loja(String id_loja) {
+        this.id_loja = id_loja;
     }
 
-    public Double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 }

@@ -109,7 +109,7 @@ public class Register extends AppCompatActivity {
         MaskTextWatcher mtw_tel = new MaskTextWatcher(edtPhone, mask_tel);
         edtPhone.addTextChangedListener(mtw_tel);
 
-        SimpleMaskFormatter mask_cpf = new SimpleMaskFormatter("NNN-NNN-NNN-NN");
+        SimpleMaskFormatter mask_cpf = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
         MaskTextWatcher mtw_cpf = new MaskTextWatcher(edtCpf, mask_cpf);
         edtCpf.addTextChangedListener(mtw_cpf);
     }
