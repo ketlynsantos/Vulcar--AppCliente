@@ -17,12 +17,15 @@ import com.app.clientevulcar.Adapter.AdapterVehiclesCategory;
 import com.app.clientevulcar.Model.Vehicle;
 import com.app.clientevulcar.R;
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+
+import cz.msebera.android.httpclient.Header;
 
 public class Services extends AppCompatActivity {
 
@@ -33,7 +36,7 @@ public class Services extends AppCompatActivity {
     public TextView txtPrice;
     public ListView lvVehicles;
 
-    public String id, idBusiness, nomeServ, descServ, idCategoria, nomeCategoria, valor;
+    public String id, idBusiness, idCat;
 
     public Activity context;
 
@@ -44,6 +47,9 @@ public class Services extends AppCompatActivity {
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
+
+    Vehicle vehicle = new Vehicle();
+    com.app.clientevulcar.Model.Services services = new com.app.clientevulcar.Model.Services();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +67,7 @@ public class Services extends AppCompatActivity {
         txtCategory.setText(getIntent().getStringExtra("nome_cate"));
         txtPrice.setText(getIntent().getStringExtra("valor"));
 
-        //carregarVehicles();
+        carregarVehicles();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +82,25 @@ public class Services extends AppCompatActivity {
     }
 
     private void carregarVehicles() {
+        String url = HOST + "Select/select_vehicle_where.php";
+        vehicle.setClienteId(id);
+        services.setId_categoria(idCat);
+        params.put("id", vehicle.getClienteId());
+        params.put("idCat", services.getId_categoria());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    listarVehicles(new String(responseBody));
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
 
     }
 
@@ -86,26 +111,25 @@ public class Services extends AppCompatActivity {
             JSONArray jsonarray = new JSONArray(resposta);
 
             for (int i = 0; i < jsonarray.length(); i++){
-                Vehicle vehicle = new Vehicle();
+                Vehicle v = new Vehicle();
+                v.setId(jsonarray.getJSONObject(i).getString("id_auto"));
+                v.setModelo(jsonarray.getJSONObject(i).getString("nome_auto"));
 
-                vehicle.setId(jsonarray.getJSONObject(i).getString("TB_AUTOMOVEL_ID"));
-                vehicle.setModelo(jsonarray.getJSONObject(i).getString("TB_AUTOMOVEL_MODELO"));
-
-                lista.add(vehicle);
+                lista.add(v);
 
             }
 
-            AdapterVehiclesCategory adapter = new AdapterVehiclesCategory(context, R.layout.adapter_vehicles_check, lista);
+            AdapterVehiclesCategory adapter = new AdapterVehiclesCategory(context, R.layout.adapter_vehicles_check, R.id.txt_id, lista);
             lvVehicles.setAdapter(adapter);
 
             lvVehicles.setClickable(true);
             lvVehicles.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Intent it = new Intent(Services.this, FinishRequest.class);
-//                    it.putExtra("idVehicle", lista.get(position).getId());
-//                    it.putExtra("id", id);
-//                    startActivity(it);
+                    Intent it = new Intent(Services.this, FinishRequest.class);
+                    it.putExtra("idVehicle", lista.get(position).getId());
+                    it.putExtra("id", id);
+                    startActivity(it);
                 }
             });
 
@@ -118,6 +142,7 @@ public class Services extends AppCompatActivity {
     private void getIds() {
         id = getIntent().getStringExtra("id");
         idBusiness = getIntent().getStringExtra("idBusiness");
+        idCat = getIntent().getStringExtra("id_cate");
 
         imgBack = findViewById(R.id.img_back);
         txtNameServices = findViewById(R.id.txt_name_services);
