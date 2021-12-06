@@ -19,6 +19,12 @@
             android:visibility="gone" />
 
         <TextView
+            android:id="@+id/txt_id_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
             android:id="@+id/txt_name_services"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

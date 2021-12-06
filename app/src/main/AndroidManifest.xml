@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClienteVulcar">
         <activity android:name=".Activitys.FollowUpService" />
-        <activity android:name=".Activitys.SplashScreen" />
+        <activity android:name=".Activitys.Login" />
         <activity android:name=".Activitys.Services" />
         <activity android:name=".Activitys.Business" />
         <activity android:name=".Activitys.MyVehicle" />
@@ -26,7 +26,7 @@
             android:name=".Activitys.Search"
             android:label="@string/title_activity_search"
             android:theme="@style/Theme.ClienteVulcar.NoActionBar" />
-        <activity android:name=".Activitys.FinishRequest">
+        <activity android:name=".Activitys.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,9 +38,9 @@
         <activity android:name=".Activitys.Register2" />
         <activity android:name=".Activitys.Profile" />
         <activity android:name=".Activitys.Requests" />
-        <activity android:name=".Activitys.Home" />
+        <activity android:name=".Activitys.FinishRequest" />
         <activity android:name=".Activitys.Register" />
-        <activity android:name=".Activitys.Login" />
+        <activity android:name=".Activitys.Home" />
         <activity android:name=".MainActivity" />
     </application>
 
