@@ -30,8 +30,8 @@ public class EditPassword extends AppCompatActivity {
     public String id;
 
     //Connection MySQL
-    //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
-    String HOST = "http://192.168.15.135/vulcar_database/Client/";
+    String HOST = "http://192.168.15.137/vulcar_database/Client/";
+    //String HOST = "http://192.168.0.106/vulcar_database/Client/";
     //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 
     RequestParams params = new RequestParams();
@@ -67,20 +67,20 @@ public class EditPassword extends AppCompatActivity {
     }
 
     private void montaObj() {
-        String oldPassword = edtPassword.getText().toString();
-        String newPassword = edtNewPassword.getText().toString();
-
+        String newPass, oldPass;
+        newPass = edtNewPassword.getText().toString();
+        oldPass = edtPassword.getText().toString();
         client.setId(id);
-        client.setPassword(oldPassword);
-        updatePassword(newPassword);
+        client.setPassword(oldPass);
+        updatePassword(client, newPass);
     }
 
-    private void updatePassword(String newPassword) {
-        String url = HOST + "update_password.php";
+    private void updatePassword(Client client, String newPass) {
+        String url = HOST+"update_pass.php";
 
         params.put("id", client.getId());
-        params.put("old_senha", client.getPassword());
-        params.put("new_senha", newPassword);
+        params.put("old_pass", client.getPassword());
+        params.put("new_pass", newPass);
 
         cliente.post(url, params, new AsyncHttpResponseHandler() {
             @Override
@@ -88,19 +88,20 @@ public class EditPassword extends AppCompatActivity {
                 if (statusCode == 200) {
                     try {
                         JSONObject result = new JSONObject(new String(responseBody));
-                        if(result.getString("UPDATE").equals("true")) {
-                            Toast.makeText(EditPassword.this, "Senha alterada com Sucesso!", Toast.LENGTH_SHORT).show();
-                            Intent it = new Intent(EditPassword.this, MyData.class);
-                            it.putExtra("id", id);
-                            startActivity(it);
-                            finish();
+                        if(result.getString("UPDATE").equals("true")){
+                            Toast.makeText(EditPassword.this, "Senha alterada com sucesso!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(EditPassword.this, MyData.class);
+                            intent.putExtra("id", id);
+                            startActivity(intent);
                         } else {
-                            Toast.makeText(EditPassword.this, "Senha atual incorreta!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditPassword.this, "Senha atual incorreta", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        Toast.makeText(EditPassword.this, "Erro ao alterar a senha!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditPassword.this, "Erro ao trocar senha!", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(EditPassword.this, "Erro ao trocar senha!", Toast.LENGTH_SHORT).show();
                 }
             }
 
