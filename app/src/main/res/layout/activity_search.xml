@@ -36,12 +36,10 @@
             style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            app:startIconDrawable="@drawable/ic_search"
-            app:startIconTint="@color/clear_blue"
             app:hintEnabled="false"
+            android:layout_toLeftOf="@id/btn_search"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
             app:boxStrokeColor="@color/white"
             app:hintTextColor="@color/dark_blue">
@@ -63,49 +61,53 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_search_blue"
+            android:background="@drawable/textbox"
+            android:backgroundTint="@color/dark_blue" />
     </RelativeLayout>
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/bar_layout"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_business"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/relative_layout_1"
-        android:layout_marginTop="15dp"
-        android:background="@color/dark_blue"
-        android:elevation="2dp"
-        android:paddingStart="15dp"
-        android:paddingRight="15dp"
-        app:elevation="0dp">
+        android:background="@color/clear_blue"
+        android:text="Empresa"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_services"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btn_business"
+        android:layout_below="@id/relative_layout_1"
+        android:background="@color/clear_blue"
+        android:text="Serviços"/>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/dark_blue"
-            android:backgroundTint="@android:color/transparent"
-            app:tabIndicatorColor="@color/clear_blue"
-            app:tabRippleColor="@color/clear_blue"
-            app:tabSelectedTextColor="@color/clear_blue"
-            app:tabTextAppearance="@style/tab_text"
-            app:tabTextColor="@color/white" />
+   <ListView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/lv_services"
+       android:scrollbars="none"
+       android:visibility="gone"
+       android:overScrollMode="never"
+       android:divider="@android:color/transparent"
+       android:layout_below="@id/btn_services"
+       android:layout_marginTop="15dp"/>
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <TextView
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/bar_layout"
-        android:layout_marginTop="-2dp"
-        android:alpha="0.2"
-        android:background="@color/white"
-        android:elevation="1dp" />
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/bar_layout"
-        android:layout_marginTop="15dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_business"
+        android:scrollbars="none"
+        android:visibility="visible"
+        android:overScrollMode="never"
+        android:divider="@android:color/transparent"
+        android:layout_below="@id/btn_services"
+        android:layout_marginTop="15dp"/>
 
 </RelativeLayout>

@@ -30,12 +30,11 @@ public class Profile extends AppCompatActivity {
     public TextView txtProfile;
     public String id;
     public RelativeLayout rlData;
-    public RelativeLayout rlCars;
     public RelativeLayout rlLogout;
 
     //Connection MySQL
-    //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
-    String HOST = "http://192.168.15.135/vulcar_database/Client/";
+    String HOST = "http://192.168.15.137/vulcar_database/Client/";
+    //String HOST = "http://192.168.0.106/vulcar_database/Client/";
     //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 
     RequestParams params = new RequestParams();
@@ -92,14 +91,6 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-//        rlCars.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent itC = new Intent(Profile.this, MyCars.class);
-//                startActivity(itC);
-//            }
-//        });
-
         rlLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,7 +130,6 @@ public class Profile extends AppCompatActivity {
         txtProfile = findViewById(R.id.txt_name_profile);
         id = getIntent().getStringExtra("id");
         rlData = findViewById(R.id.rl_edit_data);
-        rlCars = findViewById(R.id.rl_cars);
         rlLogout = findViewById(R.id.rl_logout);
     }
 }

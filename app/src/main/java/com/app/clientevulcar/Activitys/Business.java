@@ -24,6 +24,8 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -37,14 +39,15 @@ public class Business extends AppCompatActivity {
     public String id, idBusiness;
 
     //Connection MySQL
-    //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
-    String HOST = "http://192.168.15.135/vulcar_database/Business/";
-    //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
+    String HOST = "http://192.168.15.137/vulcar_database/Business/";
+    //String HOST = "http://192.168.0.106/vulcar_database/Business/";
+    //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Business/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
     Activity context;
 
+    com.app.clientevulcar.Model.Business business = new com.app.clientevulcar.Model.Business();
     com.app.clientevulcar.Model.Services services = new com.app.clientevulcar.Model.Services();
 
     @Override
@@ -57,6 +60,7 @@ public class Business extends AppCompatActivity {
         cliente = new AsyncHttpClient();
         context = Business.this;
         montaObj();
+        carregarNome();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,10 +97,9 @@ public class Business extends AppCompatActivity {
 
     private void listarServicos(String resposta) {
         final ArrayList<Services> lista = new ArrayList<>();
-
         try {
             JSONArray jsonarray = new JSONArray(resposta);
-            txtNameBusiness.setText(jsonarray.getJSONObject(0).getString("loja_nome"));
+            //txtNameBusiness.setText(jsonarray.getJSONObject(0).getString("loja_nome"));
             for (int i = 0; i < jsonarray.length(); i++){
                 Services s = new Services();
 
@@ -121,11 +124,12 @@ public class Business extends AppCompatActivity {
                     Intent it = new Intent(Business.this, com.app.clientevulcar.Activitys.Services.class);
                     it.putExtra("idBusiness", idBusiness);
                     it.putExtra("id", id);
-                    it.putExtra("nome_serv", lista.get(position).getNome());
-                    it.putExtra("nome_loja", txtNameBusiness.getText());
-                    it.putExtra("desc_serv", lista.get(position).getDesc());
-                    it.putExtra("id_cate", lista.get(position).getId_categoria());
-                    it.putExtra("nome_cate", lista.get(position).getCategoria());
+                    it.putExtra("idServ", lista.get(position).getId());
+                    it.putExtra("nomeServ", lista.get(position).getNome());
+                    it.putExtra("nomeLoja", txtNameBusiness.getText());
+                    it.putExtra("descServ", lista.get(position).getDesc());
+                    it.putExtra("idCate", lista.get(position).getId_categoria());
+                    it.putExtra("nomeCate", lista.get(position).getCategoria());
                     it.putExtra("valor", lista.get(position).getValor());
                     startActivity(it);
                 }
@@ -134,6 +138,32 @@ public class Business extends AppCompatActivity {
         } catch(Exception erro) {
             Log.d("erro", "erro"+erro);
         }
+    }
+
+    private void carregarNome() {
+        String url = HOST + "Select/select_business.php";
+
+        business.setId(idBusiness);
+        params.put("id", business.getId());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try {
+                    JSONObject jsonarray = new JSONObject(new String (responseBody));
+                    String nameBusiness = jsonarray.getString("LOJA_NOME");
+
+                    txtNameBusiness.setText(nameBusiness);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
     }
 
     private void getIds() {

@@ -36,13 +36,13 @@ public class Services extends AppCompatActivity {
     public TextView txtPrice;
     public ListView lvVehicles;
 
-    public String id, idBusiness, idCat;
+    public String id, idBusiness, idCat, idServ, nomeLoja, nomeServ, descServ, nomeCate, valor;
 
     public Activity context;
 
     //Connection MySQL
-    //String HOST = "http://192.168.15.122/Vulcar--Syncmysql/Client/";
-    String HOST = "http://192.168.15.135/vulcar_database/Client/";
+    String HOST = "http://192.168.15.137/vulcar_database/Client/";
+    //String HOST = "http://192.168.0.106/vulcar_database/Client/";
     //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 
     RequestParams params = new RequestParams();
@@ -61,11 +61,12 @@ public class Services extends AppCompatActivity {
         cliente = new AsyncHttpClient();
         context = Services.this;
 
-        txtNameBusiness.setText(getIntent().getStringExtra("nome_loja"));
-        txtNameServices.setText(getIntent().getStringExtra("nome_serv"));
-        txtDesc.setText(getIntent().getStringExtra("desc_serv"));
-        txtCategory.setText(getIntent().getStringExtra("nome_cate"));
-        txtPrice.setText(getIntent().getStringExtra("valor"));
+        txtNameBusiness.setText(nomeLoja);
+        txtNameServices.setText(nomeServ);
+        txtDesc.setText(descServ);
+        txtCategory.setText(nomeCate);
+        txtPrice.setText(valor);
+
 
         carregarVehicles();
 
@@ -75,6 +76,7 @@ public class Services extends AppCompatActivity {
                 Intent it = new Intent(Services.this, Business.class);
                 it.putExtra("id", id);
                 it.putExtra("idBusiness", idBusiness);
+                it.putExtra("id", id);
                 startActivity(it);
                 finish();
             }
@@ -125,10 +127,21 @@ public class Services extends AppCompatActivity {
             lvVehicles.setClickable(true);
             lvVehicles.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long i) {
                     Intent it = new Intent(Services.this, FinishRequest.class);
-                    it.putExtra("idVehicle", lista.get(position).getId());
                     it.putExtra("id", id);
+                    it.putExtra("idBusiness", idBusiness);
+                    it.putExtra("idServ", idServ);
+                    it.putExtra("idVehicle", lista.get(position).getId());
+                    it.putExtra("idCate", idCat);
+
+                    it.putExtra("nomeLoja", nomeLoja);
+                    it.putExtra("nomeServ", nomeServ);
+                    it.putExtra("nomeAuto", lista.get(position).getModelo());
+                    it.putExtra("descServ", descServ);
+                    it.putExtra("nomeCate", nomeCate);
+                    it.putExtra("valor", valor);
+
                     startActivity(it);
                 }
             });
@@ -141,8 +154,15 @@ public class Services extends AppCompatActivity {
 
     private void getIds() {
         id = getIntent().getStringExtra("id");
+        idServ = getIntent().getStringExtra("idServ");
         idBusiness = getIntent().getStringExtra("idBusiness");
-        idCat = getIntent().getStringExtra("id_cate");
+        idCat = getIntent().getStringExtra("idCate");
+        nomeLoja = getIntent().getStringExtra("nomeLoja");
+        nomeServ = getIntent().getStringExtra("nomeServ");
+        descServ = getIntent().getStringExtra("descServ");
+        nomeCate = getIntent().getStringExtra("nomeServ");
+        idCat = getIntent().getStringExtra("idCate");
+        valor = getIntent().getStringExtra("valor");
 
         imgBack = findViewById(R.id.img_back);
         txtNameServices = findViewById(R.id.txt_name_services);

@@ -3,6 +3,7 @@ package com.app.clientevulcar.Activitys;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -14,9 +15,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.clientevulcar.Model.Budget;
+import com.app.clientevulcar.Model.Client;
+import com.app.clientevulcar.Model.Vehicle;
 import com.app.clientevulcar.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 public class FinishRequest extends AppCompatActivity {
 
@@ -37,9 +49,23 @@ public class FinishRequest extends AppCompatActivity {
     public TextInputEditText edtThing;
     public TextInputLayout edtThingLayout;
 
-    public String idClient;
+    public String id, idBusiness, idServ, idVehicle, idCate, nomeLoja, nomeServ, nomeAuto, descServ, nomeCate, valor;
+
     public String formaPgto = "";
-    public Boolean bThing = null;
+    public Boolean bThing;
+    public Activity context;
+
+    //Connection MySQL
+    String HOST = "http://192.168.15.137/vulcar_database/";
+    //String HOST = "http://192.168.0.106/vulcar_database/";
+    //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/";
+
+    RequestParams params = new RequestParams();
+    AsyncHttpClient cliente;
+
+    com.app.clientevulcar.Model.Business business = new com.app.clientevulcar.Model.Business();
+    Budget budget = new Budget();
+    Client client = new Client();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +74,29 @@ public class FinishRequest extends AppCompatActivity {
 
         getSupportActionBar().hide();
         getIds();
+        cliente = new AsyncHttpClient();
+        context = FinishRequest.this;
+
+        carregarEnd();
+
+        txtNameBusiness.setText(nomeLoja);
+        txtNameService.setText(nomeServ);
+        txtPrice.setText("R$"+valor);
+        txtPriceTotal.setText("R$"+valor);
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent itI = new Intent(FinishRequest.this, Business.class);
-                itI.putExtra("id", idClient);
+                Intent itI = new Intent(FinishRequest.this, Services.class);
+                itI.putExtra("id", id);
+                itI.putExtra("idBusiness", idBusiness);
+                itI.putExtra("idServ", idServ);
+                itI.putExtra("nomeServ", nomeServ);
+                itI.putExtra("nomeLoja", nomeLoja);
+                itI.putExtra("descServ", descServ);
+                itI.putExtra("idCate", idCate);
+                itI.putExtra("nomeCate", nomeCate);
+                itI.putExtra("valor", valor);
                 startActivity(itI);
                 finish();
             }
@@ -71,8 +114,7 @@ public class FinishRequest extends AppCompatActivity {
                 formaPgto = "DINHEIRO";
                 //Deixa o Radio group visivel
                 rlThing.setVisibility(View.VISIBLE);
-                //Toast.makeText(FinishRequest.this, "Dinheiro", Toast.LENGTH_SHORT).show();
-
+                bThing = null;
                 //Radio group para escolher se vai precisar de troco ou não
                 rgThingMoney.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
@@ -82,12 +124,10 @@ public class FinishRequest extends AppCompatActivity {
                                 bThing = true;
                                 //Deixa o TextInputEditText visivel para digitar o troco
                                 edtThingLayout.setVisibility(View.VISIBLE);
-                                Toast.makeText(FinishRequest.this, "Dinheiro com troco", Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.rb_thing_no:
                                 bThing = false;
                                 edtThingLayout.setVisibility(View.GONE);
-                                Toast.makeText(FinishRequest.this, "Dinheiro sem troco", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -136,12 +176,43 @@ public class FinishRequest extends AppCompatActivity {
 
     }
 
+    private void carregarEnd() {
+        String url = HOST + "Business/Select/select_business.php";
+
+        business.setId(idBusiness);
+        params.put("id", business.getId());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try {
+                    JSONObject jsonarray = new JSONObject(new String (responseBody));
+                    String address = jsonarray.getString("LOJA_ENDERECO");
+                    String num = jsonarray.getString("LOJA_NUM");
+                    String neigh = jsonarray.getString("LOJA_BAIRRO");
+
+                    txtAddress.setText(address + ", " + num);
+                    txtNeigh.setText(neigh);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
     private void montaObj() {
         String thing = edtThing.getText().toString();
 
         if(formaPgto == "DINHEIRO") {
             //Se a forma de pagamento for dinheiro e precisar de troco
-            if(bThing == true) {
+            if(bThing == null){
+                Toast.makeText(FinishRequest.this, "Selecione uma opção!", Toast.LENGTH_SHORT).show();
+            } else if(bThing == true) {
                 if(thing.length() > 0) {
                     //Se for digitado o troco
                     Toast.makeText(FinishRequest.this, "AAA" + thing, Toast.LENGTH_SHORT).show();
@@ -158,12 +229,25 @@ public class FinishRequest extends AppCompatActivity {
             //Toast.makeText(FinishRequest.this, "DEBITO", Toast.LENGTH_SHORT).show();
         } else if (formaPgto == "CREDITO") {
             //Toast.makeText(FinishRequest.this, "credito", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Selecione uma forma de pagamento!", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     private void getIds() {
-        idClient = getIntent().getStringExtra("id");
+        id = getIntent().getStringExtra("id");
+        idBusiness = getIntent().getStringExtra("idBusiness");
+        idServ = getIntent().getStringExtra("idServ");
+        idVehicle = getIntent().getStringExtra("idVehicle");
+        idCate = getIntent().getStringExtra("idCate");
+
+        nomeServ = getIntent().getStringExtra("nomeServ");
+        nomeLoja = getIntent().getStringExtra("nomeLoja");
+        nomeAuto = getIntent().getStringExtra("nomeAuto");
+        descServ = getIntent().getStringExtra("descServ");
+        nomeCate = getIntent().getStringExtra("nomeCate");
+        valor = getIntent().getStringExtra("valor");
 
         imgBack = findViewById(R.id.img_back);
         txtNameBusiness = findViewById(R.id.txt_name_business);

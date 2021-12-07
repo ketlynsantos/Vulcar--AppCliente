@@ -44,7 +44,7 @@
         <RelativeLayout
             android:id="@id/relative_layout_2"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="150dp"
             android:layout_below="@id/text_view_1"
             android:layout_marginTop="35dp"
             android:background="@drawable/button_blue"
@@ -61,10 +61,20 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/text_view_3"
+                android:id="@+id/txt_name_loja"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_view_2"
+                android:fontFamily="@font/regular"
+                android:text="Loja"
+                android:textColor="@color/dark_blue"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/text_view_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_name_loja"
                 android:background="@drawable/mini_border"
                 android:fontFamily="@font/regular"
                 android:padding="5dp"
@@ -76,7 +86,7 @@
                 android:id="@+id/txt_services"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/text_view_2"
+                android:layout_below="@id/txt_name_loja"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/text_view_3"
                 android:fontFamily="@font/light"
@@ -90,8 +100,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/img_corners"
-                android:backgroundTint="@color/dark_blue" />
+                android:background="@drawable/ico_business"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_add_bag"
@@ -99,6 +108,7 @@
                 android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/button_blue"
+                android:layout_below="@id/text_view_3"
                 android:fontFamily="@font/semibold"
                 android:text="Adiconar à sacola"
                 android:textAllCaps="false"

@@ -1,7 +1,23 @@
 package com.app.clientevulcar.Model;
 
 public class Services {
-    private String id, nome, desc, id_categoria, categoria, id_loja;
+    private String id, nome, desc, id_categoria, categoria, id_loja, nome_loja, id_cliente;
+
+    public String getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(String id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+
+    public String getNome_loja() {
+        return nome_loja;
+    }
+
+    public void setNome_loja(String nome_loja) {
+        this.nome_loja = nome_loja;
+    }
 
     public String getId_categoria() {
         return id_categoria;

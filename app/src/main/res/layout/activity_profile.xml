@@ -123,62 +123,6 @@
 
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/rl_cars"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp">
-
-                    <ImageView
-                        android:id="@+id/image_view_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:background="@drawable/ic_car" />
-
-                    <TextView
-                        android:id="@+id/text_view_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@id/image_view_2"
-                        android:fontFamily="@font/semibold"
-                        android:text="Automóveis"
-                        android:textColor="@color/white"
-                        android:textSize="18dp" />
-
-                    <TextView
-                        android:id="@+id/text_view_5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/text_view_4"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="-5dp"
-                        android:layout_toRightOf="@id/image_view_2"
-                        android:fontFamily="@font/light"
-                        android:text="Meus automóveis"
-                        android:textColor="@color/white"
-                        android:textSize="16dp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:background="@drawable/ic_arrow"
-                        android:rotation="270" />
-
-                    <TextView
-                        android:id="@+id/text_view_6"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_below="@id/text_view_5"
-                        android:layout_marginTop="15dp"
-                        android:alpha="0.1"
-                        android:background="@color/white"
-                        android:elevation="1dp" />
-
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/rl_logout"
