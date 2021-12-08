@@ -31,7 +31,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="@font/semibold"
-            android:text="Lava Bem Sr.Esponja"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="20dp" />
 
@@ -68,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/semibold"
-                    android:text="(Sedan)"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="18dp" />
 
@@ -79,7 +79,7 @@
                     android:layout_below="@id/txt_category_services"
                     android:layout_marginTop="2dp"
                     android:fontFamily="@font/light"
-                    android:text="Limpeza interna do automóvel (bancos, carpete, painel) e ..."
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="16dp" />
 
@@ -103,14 +103,14 @@
                     android:layout_marginTop="15dp"
                     android:layout_toRightOf="@id/text_view_1"
                     android:fontFamily="@font/regular"
-                    android:text="240,00"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="18dp" />
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/lv_business"
+                android:id="@+id/_rl_business"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/relative_layout_2"

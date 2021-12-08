@@ -2,6 +2,7 @@ package com.app.clientevulcar.Activitys;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.app.clientevulcar.Adapter.AdapterSearchBusiness;
@@ -42,7 +43,7 @@ public class Search extends AppCompatActivity {
     ImageButton btnSearch;
 
     //Connection MySQL
-    String HOST = "http://192.168.15.137/vulcar_database/Client/";
+    String HOST = "http://192.168.15.112/vulcar_database/Client/";
     //String HOST = "http://192.168.0.106/vulcar_database/Client/";
     //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 
@@ -97,6 +98,8 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 lvBusiness.setVisibility(View.VISIBLE);
+                btnBusiness.setTextColor(getResources().getColor(R.color.clear_blue));
+                btnServices.setTextColor(getResources().getColor(R.color.white));
                 lvServices.setVisibility(View.GONE);
             }
         });
@@ -105,6 +108,8 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 lvBusiness.setVisibility(View.GONE);
+                btnBusiness.setTextColor(getResources().getColor(R.color.white));
+                btnServices.setTextColor(getResources().getColor(R.color.clear_blue));
                 lvServices.setVisibility(View.VISIBLE);
             }
         });

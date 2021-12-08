@@ -1,56 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:background="@color/dark_blue"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relative_layout_1"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/stroke_border_color_10dp"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/txt_id_services"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_id_loja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_id_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_name_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text=""/>
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/txt_name_business"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:alpha="0.1"
+            android:background="@color/white"
+            android:elevation="1dp" />
+
+        <TextView
+            android:id="@+id/txt_name_services"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/regular"
+            android:text=""
+            android:layout_below="@id/line"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txt_desc_services"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_name_services"
+            android:layout_marginTop="-2dp"
+            android:fontFamily="@font/light"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txt_name_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_desc_services"
+            android:visibility="visible"
+            android:fontFamily="@font/semibold"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/text_view_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_name_category"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/regular"
+            android:text="A partir de R$"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_name_category"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/text_view_1"
+            android:fontFamily="@font/regular"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:visibility="visible" />
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/txt_id_services"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/text_view_3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/relative_layout_1"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="15dp"
+        android:alpha="0.1"
+        android:background="@color/white"
+        android:elevation="1dp" />
 
-    <TextView
-        android:id="@+id/txt_id_loja"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/txt_id_category"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/txt_name_services"
-        android:visibility="visible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/txt_desc_services"
-        android:visibility="visible"
-        android:layout_below="@id/txt_name_services"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/txt_name_business"
-        android:visibility="visible"
-        android:layout_below="@id/txt_desc_services"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/txt_name_category"
-        android:visibility="visible"
-        android:layout_below="@id/txt_name_business"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/txt_value"
-        android:visibility="visible"
-        android:layout_below="@id/txt_name_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 </RelativeLayout>
