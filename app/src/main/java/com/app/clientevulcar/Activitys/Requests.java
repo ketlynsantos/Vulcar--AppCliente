@@ -15,6 +15,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.clientevulcar.Adapter.AdapterLojas;
@@ -22,6 +23,7 @@ import com.app.clientevulcar.Adapter.AdapterRequests;
 import com.app.clientevulcar.Adapter.AdapterServices;
 import com.app.clientevulcar.Adapter.RecyclerAdapterVehicles;
 import com.app.clientevulcar.Model.Client;
+import com.app.clientevulcar.Model.ItemsBudget;
 import com.app.clientevulcar.Model.Services;
 import com.app.clientevulcar.Model.Vehicle;
 import com.app.clientevulcar.R;
@@ -32,6 +34,8 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -40,22 +44,26 @@ import cz.msebera.android.httpclient.Header;
 public class Requests extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
-    public TextView txtServices;
+    public TextView txtServices, txtName;
     public ImageView imgLogoBusiness;
     public AppCompatButton btnAddBag;
     public ListView lvRequests;
+    public RelativeLayout rLayout2;
     public String id;
+
+    public String idOrc, nomeLoja, nomeServ, idStatus;
 
     public Activity context;
 
     //Connection MySQL
-    String HOST = "http://192.168.15.137/vulcar_database/Client/";
+    String HOST = "http://192.168.15.112/vulcar_database/Client/";
     //String HOST = "http://192.168.0.106/vulcar_database/Client/";
     //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
     Services services = new Services();
+    ItemsBudget ibudget = new ItemsBudget();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +76,7 @@ public class Requests extends AppCompatActivity {
         context = Requests.this;
 
         carregarServices();
+        montaObj();
 
         bottomNavigationView.setSelectedItemId(R.id.requests);
 
@@ -104,6 +113,43 @@ public class Requests extends AppCompatActivity {
         btnAddBag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(Requests.this, FollowUpService.class);
+                intent.putExtra("id", id);
+                intent.putExtra("idOrc", idOrc);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void montaObj() {
+        String url = HOST + "Select/select_itens_orc.php";
+
+        ibudget.setIdCliente(id);
+        params.put("id", ibudget.getIdCliente());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try {
+                    JSONObject jsonarray = new JSONObject(new String (responseBody));
+                    for (int i = 0; i < jsonarray.length(); i++) {
+                        ItemsBudget b = new ItemsBudget();
+
+                        idOrc = jsonarray.getString("ID_ORC");
+                        nomeLoja = jsonarray.getString("TB_LOJA_NOME");
+                        nomeServ = jsonarray.getString("SERVICO");
+                        idStatus = jsonarray.getString("ID_STATUS");
+
+                        txtName.setText(nomeLoja);
+                        txtServices.setText(nomeServ);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
             }
         });
@@ -161,9 +207,11 @@ public class Requests extends AppCompatActivity {
     private void getIds(){
         id = getIntent().getStringExtra("id");
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        txtName = findViewById(R.id.txt_name_loja);
         txtServices = findViewById(R.id.txt_services);
         imgLogoBusiness = findViewById(R.id.img_logo);
         btnAddBag = findViewById(R.id.btn_add_bag);
         lvRequests = findViewById(R.id.lv_historic_requests);
+        rLayout2 = findViewById(R.id.relative_layout_2);
     }
 }

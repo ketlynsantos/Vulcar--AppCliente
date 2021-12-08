@@ -11,7 +11,9 @@
         android:id="@+id/relative_layout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
         android:background="@color/dark_blue"
         android:elevation="2dp">
 
@@ -30,7 +32,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="@font/semibold"
-            android:text="Lava Bem Sr.Esponja"
+            android:text=""
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
             android:textSize="20dp" />
@@ -62,6 +64,7 @@
             android:layout_height="match_parent"
             android:scrollbars="none"
             android:overScrollMode="never"
+            android:divider="@android:color/transparent"
             android:layout_below="@id/text_view_2" />
 
     </RelativeLayout>

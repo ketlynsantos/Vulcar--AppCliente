@@ -119,7 +119,7 @@ public class Register extends AppCompatActivity {
             edtName.requestFocus();
             edtName.setError("Campo vazio.");
             return false;
-        } else if(!name.matches("[a-zA-Z]+")) {
+        } else if(!name.matches("^[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$")) {
             edtName.requestFocus();
             edtName.setError("Apenas letras, por favor!");
             return false;

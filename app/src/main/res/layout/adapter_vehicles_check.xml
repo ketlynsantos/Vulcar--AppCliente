@@ -41,7 +41,7 @@
             android:layout_centerVertical="true"
             android:fontFamily="@font/regular"
             android:layout_marginLeft="15dp"
-            android:text="Teste"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="16dp" />
 

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.clientevulcar.Adapter.AdapterLojas;
@@ -35,13 +36,14 @@ public class Services extends AppCompatActivity {
     public TextView txtDesc;
     public TextView txtPrice;
     public ListView lvVehicles;
+    public RelativeLayout rlBusiness;
 
     public String id, idBusiness, idCat, idServ, nomeLoja, nomeServ, descServ, nomeCate, valor;
 
     public Activity context;
 
     //Connection MySQL
-    String HOST = "http://192.168.15.137/vulcar_database/Client/";
+    String HOST = "http://192.168.15.112/vulcar_database/Client/";
     //String HOST = "http://192.168.0.106/vulcar_database/Client/";
     //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 
@@ -67,7 +69,6 @@ public class Services extends AppCompatActivity {
         txtCategory.setText(nomeCate);
         txtPrice.setText(valor);
 
-
         carregarVehicles();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +77,18 @@ public class Services extends AppCompatActivity {
                 Intent it = new Intent(Services.this, Business.class);
                 it.putExtra("id", id);
                 it.putExtra("idBusiness", idBusiness);
+                //it.putExtra("id", id);
+                startActivity(it);
+                finish();
+            }
+        });
+
+        rlBusiness.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Services.this, Business.class);
                 it.putExtra("id", id);
+                it.putExtra("idBusiness", idBusiness);
                 startActivity(it);
                 finish();
             }
@@ -171,5 +183,6 @@ public class Services extends AppCompatActivity {
         txtDesc = findViewById(R.id.txt_desc_services);
         txtPrice = findViewById(R.id.txt_price_services);
         lvVehicles = findViewById(R.id.lv_vehicles);
+        rlBusiness = findViewById(R.id._rl_business);
     }
 }

@@ -3,8 +3,25 @@ package com.app.clientevulcar.Model;
 import java.util.Date;
 
 public class Budget {
-    private String id, idCliente, nomeCliente, idLoja, nomeLoja, idStatus, nomeStatus;
-    private Date dtOrcamento;
+    private String id, idCliente, nomeCliente, idLoja, nomeLoja, nomeStatus, thing, idPag;
+    private String dtOrcamento;
+    private int sts;
+
+    public String getThing() {
+        return thing;
+    }
+
+    public void setThing(String thing) {
+        this.thing = thing;
+    }
+
+    public String getIdPag() {
+        return idPag;
+    }
+
+    public void setIdPag(String idPag) {
+        this.idPag = idPag;
+    }
 
     public String getId() {
         return id;
@@ -46,14 +63,6 @@ public class Budget {
         this.nomeLoja = nomeLoja;
     }
 
-    public String getIdStatus() {
-        return idStatus;
-    }
-
-    public void setIdStatus(String idStatus) {
-        this.idStatus = idStatus;
-    }
-
     public String getNomeStatus() {
         return nomeStatus;
     }
@@ -62,11 +71,19 @@ public class Budget {
         this.nomeStatus = nomeStatus;
     }
 
-    public Date getDtOrcamento() {
+    public String getDtOrcamento() {
         return dtOrcamento;
     }
 
-    public void setDtOrcamento(Date dtOrcamento) {
+    public void setDtOrcamento(String dtOrcamento) {
         this.dtOrcamento = dtOrcamento;
+    }
+
+    public int getSts() {
+        return sts;
+    }
+
+    public void setSts(int sts) {
+        this.sts = sts;
     }
 }

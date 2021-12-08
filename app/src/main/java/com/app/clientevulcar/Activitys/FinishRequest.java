@@ -7,7 +7,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -15,8 +17,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.clientevulcar.Adapter.AdapterSearchBusiness;
 import com.app.clientevulcar.Model.Budget;
 import com.app.clientevulcar.Model.Client;
+import com.app.clientevulcar.Model.ItemsBudget;
 import com.app.clientevulcar.Model.Vehicle;
 import com.app.clientevulcar.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -25,8 +29,13 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -49,22 +58,25 @@ public class FinishRequest extends AppCompatActivity {
     public TextInputEditText edtThing;
     public TextInputLayout edtThingLayout;
 
-    public String id, idBusiness, idServ, idVehicle, idCate, nomeLoja, nomeServ, nomeAuto, descServ, nomeCate, valor;
+    public String id, idBusiness, idServ, idVehicle, idCate, idOrc, idFunc = "1", nomeLoja, nomeServ, nomeAuto, descServ, nomeCate,
+            valor, idPag, thing = "", date;
 
     public String formaPgto = "";
     public Boolean bThing;
     public Activity context;
 
     //Connection MySQL
-    String HOST = "http://192.168.15.137/vulcar_database/";
+    String HOST = "http://192.168.15.112/vulcar_database/";
     //String HOST = "http://192.168.0.106/vulcar_database/";
     //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/";
 
     RequestParams params = new RequestParams();
+    RequestParams params2 = new RequestParams();
     AsyncHttpClient cliente;
 
     com.app.clientevulcar.Model.Business business = new com.app.clientevulcar.Model.Business();
     Budget budget = new Budget();
+    ItemsBudget items = new ItemsBudget();
     Client client = new Client();
 
     @Override
@@ -76,6 +88,10 @@ public class FinishRequest extends AppCompatActivity {
         getIds();
         cliente = new AsyncHttpClient();
         context = FinishRequest.this;
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        date = sdf.format(c.getTime());
 
         carregarEnd();
 
@@ -206,16 +222,20 @@ public class FinishRequest extends AppCompatActivity {
     }
 
     private void montaObj() {
-        String thing = edtThing.getText().toString();
+
 
         if(formaPgto == "DINHEIRO") {
             //Se a forma de pagamento for dinheiro e precisar de troco
             if(bThing == null){
                 Toast.makeText(FinishRequest.this, "Selecione uma opção!", Toast.LENGTH_SHORT).show();
+
             } else if(bThing == true) {
+                thing = edtThing.getText().toString();
                 if(thing.length() > 0) {
                     //Se for digitado o troco
                     Toast.makeText(FinishRequest.this, "AAA" + thing, Toast.LENGTH_SHORT).show();
+                    idPag = "3";
+                    cadOrca();
                 } else {
                     //se não digitar o troco
                     edtThing.requestFocus();
@@ -223,16 +243,140 @@ public class FinishRequest extends AppCompatActivity {
                 }
             } else if (bThing == false) {
                 //Se a forma de pagamento for dinheiro, mas não precisar de troco
-                //Toast.makeText(FinishRequest.this, "Dinheiro sem troco", Toast.LENGTH_SHORT).show();
+                idPag = "3";
+                cadOrca();
             }
         } else if (formaPgto == "DEBITO") {
             //Toast.makeText(FinishRequest.this, "DEBITO", Toast.LENGTH_SHORT).show();
+            idPag = "2";
+            cadOrca();
         } else if (formaPgto == "CREDITO") {
             //Toast.makeText(FinishRequest.this, "credito", Toast.LENGTH_SHORT).show();
+            idPag = "1";
+            cadOrca();
         } else {
             Toast.makeText(context, "Selecione uma forma de pagamento!", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void cadOrca() {
+
+        int sts = 8;
+        budget.setIdCliente(id);
+        budget.setIdLoja(idBusiness);
+        budget.setSts(sts);
+        budget.setDtOrcamento(date);
+        budget.setIdPag(idPag);
+        budget.setThing(thing);
+        cadastrarOrc(budget);
+    }
+
+    private void cadastrarOrc(Budget budget) {
+        String url = HOST+"Client/insert_quote.php";
+
+        params.put("cli_id", budget.getIdCliente());
+        params.put("loja_id", budget.getIdLoja());
+        params.put("status_id", budget.getSts());
+        params.put("date", budget.getDtOrcamento());
+        params.put("pag_id", budget.getIdPag());
+        params.put("troco", budget.getThing());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    listarBudgets(new String(responseBody));
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
+    private void listarBudgets(String resposta) {
+        try {
+            JSONArray jsonarray = new JSONArray(resposta);
+
+            for (int i = 0; i < jsonarray.length(); i++){
+                Budget b = new Budget();
+
+                b.setId(jsonarray.getJSONObject(i).getString("TB_ORCAMENTO_ID"));
+                b.setIdCliente(jsonarray.getJSONObject(i).getString("TB_CLIENTE_ID"));
+                b.setIdLoja(jsonarray.getJSONObject(i).getString("TB_LOJA_ID"));
+                b.setSts(jsonarray.getJSONObject(i).getInt("TB_STATUS_ID"));
+                b.setDtOrcamento(jsonarray.getJSONObject(i).getString("TB_ORCAMENTO_DT"));
+                b.setIdPag(jsonarray.getJSONObject(i).getString("TB_PAGAMENTO_ID"));
+                b.setThing(jsonarray.getJSONObject(i).getString("TB_TROCO"));
+
+                idOrc = b.getId();
+                cadItens();
+            }
+        } catch(Exception erro) {
+            Log.d("erro", "erro"+erro);
+        }
+    }
+
+    private void cadItens() {
+        items.setIdOrcamento(idOrc);
+        items.setIdServico(idServ);
+        items.setIdAutomovel(idVehicle);
+        items.setIdFuncionario(idFunc);
+
+        cadastrarItens(items);
+    }
+
+    private void cadastrarItens(ItemsBudget items) {
+        String url = HOST+"Client/insert_itens_quote.php";
+
+        params2.put("orca_id", items.getIdOrcamento());
+        params2.put("serv_id", items.getIdServico());
+        params2.put("auto_id", items.getIdAutomovel());
+        params2.put("func_id", idFunc);
+
+        cliente.post(url, params2, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    listarItems(new String(responseBody));
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
+    private void listarItems(String resposta) {
+        try {
+            JSONArray jsonarray = new JSONArray(resposta);
+
+            for (int i = 0; i < jsonarray.length(); i++){
+                ItemsBudget b = new ItemsBudget();
+
+                b.setId(jsonarray.getJSONObject(i).getString("TB_ITENS_ORC_ID"));
+                b.setIdOrcamento(jsonarray.getJSONObject(i).getString("TB_ORCAMENTO_ID"));
+                b.setIdServico(jsonarray.getJSONObject(i).getString("TB_SERVICO_ID"));
+                b.setIdAutomovel(jsonarray.getJSONObject(i).getString("TB_AUTOMOVEL_ID"));
+
+                String itensId = b.getId();
+
+                Intent it = new Intent(FinishRequest.this, FollowUpService.class);
+
+                it.putExtra("idBusiness", idBusiness);
+                it.putExtra("id", id);
+
+
+                startActivity(it);
+            }
+        } catch(Exception erro) {
+            Log.d("erro", "erro"+erro);
+        }
     }
 
     private void getIds() {

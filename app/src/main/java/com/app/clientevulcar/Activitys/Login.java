@@ -31,7 +31,7 @@ public class Login extends AppCompatActivity {
     public AppCompatButton btnLogin;
 
     //Connection MySQL
-    String HOST = "http://192.168.15.137/vulcar_database/Client/";
+    String HOST = "http://192.168.15.112/vulcar_database/Client/";
     //String HOST = "http://192.168.0.106/vulcar_database/Client/";
     //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Client/";
 

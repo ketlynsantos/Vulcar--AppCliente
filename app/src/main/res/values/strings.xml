@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cliente Vulcar</string>
+    <string name="app_name">Vulcar</string>
     <string name="title_activity_search">Search</string>
     <string name="tab_text_1">Empresas</string>
     <string name="tab_text_2">Serviços</string>

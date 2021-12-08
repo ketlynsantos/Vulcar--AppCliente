@@ -35,28 +35,28 @@
             android:id="@+id/edt_search_layout"
             style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            app:hintEnabled="false"
+            android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/btn_search"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopStart="10dp"
             app:boxStrokeColor="@color/white"
+            app:hintEnabled="false"
             app:hintTextColor="@color/dark_blue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_search"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/regular"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:hint="Empresas e serviços"
-                android:textColorHint="@color/dark_blue"
+                android:layout_height="40dp"
                 android:background="@drawable/textbox"
                 android:backgroundTint="@color/white"
+                android:fontFamily="@font/regular"
+                android:hint="Empresas e serviços"
+                android:importantForAutofill="no"
+                android:inputType="text"
                 android:padding="6dp"
                 android:textColor="@color/dark_blue"
+                android:textColorHint="@color/dark_blue"
                 android:textSize="16dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -65,49 +65,86 @@
             android:id="@+id/btn_search"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="5dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_search_blue"
-            android:background="@drawable/textbox"
-            android:backgroundTint="@color/dark_blue" />
+            android:background="@drawable/textbox_op"
+            android:src="@drawable/ic_search_blue" />
+
     </RelativeLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_business"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/relative_layout_1"
-        android:background="@color/clear_blue"
-        android:text="Empresa"/>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_services"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/btn_business"
-        android:layout_below="@id/relative_layout_1"
-        android:background="@color/clear_blue"
-        android:text="Serviços"/>
-
-   <ListView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:id="@+id/lv_services"
-       android:scrollbars="none"
-       android:visibility="gone"
-       android:overScrollMode="never"
-       android:divider="@android:color/transparent"
-       android:layout_below="@id/btn_services"
-       android:layout_marginTop="15dp"/>
-
-    <ListView
+    <RelativeLayout
+        android:id="@+id/relative_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lv_business"
-        android:scrollbars="none"
-        android:visibility="visible"
-        android:overScrollMode="never"
+        android:layout_below="@id/relative_layout_1"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_business"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/semibold"
+            android:text="Empresa"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_services"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/btn_business"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/semibold"
+            android:text="Serviços"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/text_view_3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/btn_services"
+            android:layout_marginTop="5dp"
+            android:alpha="0.1"
+            android:background="@color/white"
+            android:elevation="1dp" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_services"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative_buttons"
+        android:layout_marginTop="15dp"
         android:divider="@android:color/transparent"
-        android:layout_below="@id/btn_services"
-        android:layout_marginTop="15dp"/>
+        android:overScrollMode="never"
+        android:layout_above="@id/bottom_navigation"
+        android:scrollbars="none"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/lv_business"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative_buttons"
+        android:layout_marginTop="15dp"
+        android:divider="@android:color/transparent"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@id/bottom_navigation"
+        android:visibility="visible" />
 
 </RelativeLayout>
