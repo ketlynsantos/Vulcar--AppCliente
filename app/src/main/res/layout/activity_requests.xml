@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_view_2"
                 android:fontFamily="@font/regular"
-                android:text="Loja"
+                android:text="Sem pedidos"
                 android:textColor="@color/dark_blue"
                 android:textSize="16dp" />
 
@@ -92,7 +92,7 @@
                 android:layout_toRightOf="@id/text_view_3"
                 android:fontFamily="@font/light"
                 android:padding="5dp"
-                android:text="Lavagem Interna"
+                android:text=""
                 android:textColor="@color/dark_blue"
                 android:textSize="16dp" />
 
@@ -140,6 +140,8 @@
                 android:id="@+id/lv_historic_requests"
                 android:layout_below="@id/text_view_4"
                 android:scrollbars="none"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
                 android:layout_marginTop="15dp"/>
 
         </RelativeLayout>
